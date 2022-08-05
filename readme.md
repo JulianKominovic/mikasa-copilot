@@ -1,3 +1,5 @@
+#Mikasa copilot
+
 Todo esto como extension de vscode, en lo posible como lo hace copilot.
 El server quedaria corriendo local en la maquina en el puerto 5000 por ejemplo
 
