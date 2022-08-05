@@ -1,0 +1,2327 @@
+[
+  {
+    "snippetName": "Javascript Cast a value as an array",
+    "snippet": "const castArray = (value) => (Array.isArray(value) ? value : [value]);"
+  },
+  {
+    "snippetName": "Javascript Cast a value as an array",
+    "snippet": "const castArray = <T,_>(value: T | T[]): T[] => (Array.isArray(value) ? value : [value]);"
+  },
+  {
+    "snippetName": "Javascript Check if an array is empty",
+    "snippet": "// `arr` is an arrayconst isEmpty = (arr) => Array.isArray(arr) && !arr.length;"
+  },
+  {
+    "snippetName": "Javascript Check if an array is empty",
+    "snippet": "const isEmpty = <T,_>(arr: T[]): boolean => Array.isArray(arr) && !arr.length;"
+  },
+  {
+    "snippetName": "Javascript Clone an array",
+    "snippet": "// `arr` is an arrayconst clone = (arr) => arr.slice(0);\n// Orconst clone = (arr) => [...arr];\n// Orconst clone = (arr) => Array.from(arr);\n// Orconst clone = (arr) => arr.map((x) => x);\n// Orconst clone = (arr) => JSON.parse(JSON.stringify(arr));\n// Orconst clone = (arr) => arr.concat([]);\n// Orconst clone = (arr) => structuredClone(arr);"
+  },
+  {
+    "snippetName": "Javascript Clone an array",
+    "snippet": "// `arr` is an arrayconst clone = <T,_>(arr: T[]): T[] => arr.slice(0);\n// Orconst clone = <T,_>(arr: T[]): T[] => [...arr];\n// Orconst clone = <T,_>(arr: T[]): T[] => Array.from(arr);\n// Orconst clone = <T,_>(arr: T[]): T[] => arr.map((x) => x);\n// Orconst clone = <T,_>(arr: T[]): T[] => JSON.parse(JSON.stringify(arr));\n// Orconst clone = <T,_>(arr: T[]): T[] => arr.concat([]);\n// Orconst clone = <T,_>(arr: T[]): T[] => structuredClone(arr);"
+  },
+  {
+    "snippetName": "Javascript Compare two arrays regardless of order",
+    "snippet": "// `a` and `b` are arraysconst isEqual = (a, b) => JSON.stringify([...new Set(a)].sort()) === JSON.stringify([...new Set(b)].sort());"
+  },
+  {
+    "snippetName": "Javascript Compare two arrays regardless of order",
+    "snippet": "const isEqual = <T,_>(a: T[], b: T[]): boolean => JSON.stringify([...(new Set(a))].sort()) === JSON.stringify([...(new Set(b))].sort());"
+  },
+  {
+    "snippetName": "Javascript Compare two arrays",
+    "snippet": "// `a` and `b` are arraysconst isEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b);\n// Orconst isEqual = (a, b) => a.length === b.length && a.every((v, i) => v === b[i]);"
+  },
+  {
+    "snippetName": "Javascript Compare two arrays",
+    "snippet": "const isEqual = <T,_>(a: T[], b: T[]): boolean => JSON.stringify(a) === JSON.stringify(b);\n// Orconst isEqual = <T,_>(a: T[], b: T[]): boolean => a.length === b.length && a.every((v, i) => v === b[i]);"
+  },
+  {
+    "snippetName": "Javascript Convert an array of objects to a single object",
+    "snippet": "const toObject = (arr, key) => arr.reduce((a, b) => ({ ...a, [b[key]]: b }), {});\n// Orconst toObject = (arr, key) => Object.fromEntries(arr.map((it) => [it[key], it]));"
+  },
+  {
+    "snippetName": "Javascript Convert an array of objects to a single object",
+    "snippet": "const toObject = <T extends Record<string, any>, K extends keyof T>(arr: T[], key: K): Record<string, T> => (    arr.reduce((a, b) => ({ ...a, [b[key]]: b }), {}));\nconst toObject = <T extends Record<string, any>, K extends keyof T>(arr: T[], key: K): Record<string, T> => (    Object.fromEntries(arr.map((it) => [it[key], it])));"
+  },
+  {
+    "snippetName": "Javascript Convert an array of strings to numbers",
+    "snippet": "const toNumbers = (arr) => arr.map(Number);\n// Orconst toNumbers = (arr) => arr.map((x) => +x);"
+  },
+  {
+    "snippetName": "Javascript Convert an array of strings to numbers",
+    "snippet": "const toNumbers = (arr: string[]): number[] => arr.map(Number);\n// Orconst toNumbers = (arr: string[]): number[] => arr.map((x) => +x);"
+  },
+  {
+    "snippetName": "Javascript Count by the properties of an array of objects",
+    "snippet": "const countBy = (arr, prop) => arr.reduce((prev, curr) => ((prev[curr[prop]] = ++prev[curr[prop]] || 1), prev), {});"
+  },
+  {
+    "snippetName": "Javascript Count by the properties of an array of objects",
+    "snippet": "const countBy = <T extends Record<string, string>, K extends keyof T>(arr: T[], prop: K): Record<string, number> => (    arr.reduce((prev, curr) => ((prev[curr[prop]] = ++prev[curr[prop]] || 1), prev), {} as Record<string, number>));"
+  },
+  {
+    "snippetName": "Javascript Count the occurrences of a value in an array",
+    "snippet": "const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);\n// Orconst countOccurrences = (arr, val) => arr.filter((item) => item === val).length;"
+  },
+  {
+    "snippetName": "Javascript Count the occurrences of a value in an array",
+    "snippet": "const countOccurrences = <T,_>(arr: T[], val: T): number => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);\n// Orconst countOccurrences = <T,_>(arr: T[], val: T): number => arr.filter((item) => item === val).length;"
+  },
+  {
+    "snippetName": "Javascript Count the occurrences of array elements",
+    "snippet": "const countOccurrences = (arr) => arr.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});"
+  },
+  {
+    "snippetName": "Javascript Count the occurrences of array elements",
+    "snippet": "const countOccurrences = <T extends string | number,>(arr: T[]): Record<T, number> => (    arr.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {}as Record<T, number>));"
+  },
+  {
+    "snippetName": "Javascript Create an array of cumulative sum",
+    "snippet": "const accumulate = (arr) =>    arr.map(        (            (sum) => (value) =>                (sum += value)        )(0)    );\n// Orconst accumulate = (arr) => arr.reduce((a, b, i) => (i === 0 ? [b] : [...a, b + a[i - 1]]), [0]);"
+  },
+  {
+    "snippetName": "Javascript Create an array of cumulative sum",
+    "snippet": "const accumulate = (arr: number[]): number[] =>    arr.map(        (            (sum) => (value: number) =>                (sum += value)        )(0)    );\n// Orconst accumulate = (arr: number[]): number[] => arr.reduce((a, b, i) => (i === 0 ? [b] : [...a, b + a[i - 1]]), [0]);"
+  },
+  {
+    "snippetName": "Javascript Create an array of numbers in the given range",
+    "snippet": "const range = (min, max) => [...Array(max - min + 1).keys()].map((i) => i + min);\n// Orconst range = (min, max) =>    Array(max - min + 1)        .fill(0)        .map((_, i) => min + i);\n// Orconst range = (min, max) => Array.from({ length: max - min + 1 }, (_, i) => min + i);"
+  },
+  {
+    "snippetName": "Javascript Create an array of numbers in the given range",
+    "snippet": "const range = (min: number, max: number): number[] => [...Array(max - min + 1).keys()].map((i) => i + min);\n// Orconst range = (min: number, max: number): number[] =>    Array(max - min + 1)        .fill(0)        .map((_, i) => min + i);\n// Orconst range = (min: number, max: number): number[] => Array.from({ length: max - min + 1 }, (_, i) => min + i);"
+  },
+  {
+    "snippetName": "Javascript Create cartesian product",
+    "snippet": "const cartesian = (...sets) => sets.reduce((acc, set) => acc.flatMap((x) => set.map((y) => [...x, y])), [[]]);"
+  },
+  {
+    "snippetName": "Javascript Create cartesian product",
+    "snippet": "cartesian([1, 2], [3, 4]); // [ [1, 3], [1, 4], [2, 3], [2, 4] ]\n/*       3       4   ---------------1 | [1, 3]  [1, 4]  |2 | [2, 3]  [2, 4]\n*/"
+  },
+  {
+    "snippetName": "Javascript Empty an array",
+    "snippet": "const empty = (arr) => (arr.length = 0);\n// Orarr = [];"
+  },
+  {
+    "snippetName": "Javascript Empty an array",
+    "snippet": "const empty = <T,_>(arr: T[]) => (arr.length = 0);\n// Orarr = [];"
+  },
+  {
+    "snippetName": "Javascript Find the closest number from an array",
+    "snippet": "// Find the number from `arr` which is closest to `n`const closest = (arr, n) => arr.reduce((prev, curr) => (Math.abs(curr - n) < Math.abs(prev - n) ? curr : prev));\n// Orconst closest = (arr, n) => arr.sort((a, b) => Math.abs(a - n) - Math.abs(b - n))[0];"
+  },
+  {
+    "snippetName": "Javascript Find the closest number from an array",
+    "snippet": "const closest = (arr: number[], n: number): number => arr.reduce((prev, curr) => (Math.abs(curr - n) < Math.abs(prev - n) ? curr : prev));\n// Orconst closest = (arr: number[], n: number): number => arr.sort((a, b) => Math.abs(a - n) - Math.abs(b - n))[0];"
+  },
+  {
+    "snippetName": "Javascript Find the index of the last matching item of an array",
+    "snippet": "const lastIndex = (arr, predicate) => arr.reduce((prev, curr, index) => (predicate(curr) ? index : prev), -1);\n// Orconst lastIndex = (arr, predicate) => arr.map((item) => predicate(item)).lastIndexOf(true);"
+  },
+  {
+    "snippetName": "Javascript Find the index of the last matching item of an array",
+    "snippet": "const lastIndex = <T,_>(arr: T[], predicate: (a: T) => boolean): number => arr.reduce((prev, curr, index) => (predicate(curr) ? index : prev), -1);\n// Orconst lastIndex = <T,_>(arr: T[], predicate: (a: T) => boolean): number => arr.map((item) => predicate(item)).lastIndexOf(true);"
+  },
+  {
+    "snippetName": "Javascript Find the index of the maximum item of an array",
+    "snippet": "const indexOfMax = (arr) => arr.reduce((prev, curr, i, a) => (curr > a[prev] ? i : prev), 0);"
+  },
+  {
+    "snippetName": "Javascript Find the index of the maximum item of an array",
+    "snippet": "const indexOfMax = (arr: number[]): number => arr.reduce((prev, curr, i, a) => (curr > a[prev] ? i : prev), 0);"
+  },
+  {
+    "snippetName": "Javascript Find the index of the minimum item of an array",
+    "snippet": "const indexOfMin = (arr) => arr.reduce((prev, curr, i, a) => (curr < a[prev] ? i : prev), 0);"
+  },
+  {
+    "snippetName": "Javascript Find the index of the minimum item of an array",
+    "snippet": "const indexOfMin = (arr: number[]): number => arr.reduce((prev, curr, i, a) => (curr < a[prev] ? i : prev), 0);"
+  },
+  {
+    "snippetName": "Javascript Find the length of the longest string in an array",
+    "snippet": "const findLongest = (words) => Math.max(...words.map((el) => el.length));"
+  },
+  {
+    "snippetName": "Javascript Find the length of the longest string in an array",
+    "snippet": "const findLongest = (words: string[]): number => Math.max(...words.map((el) => el.length));"
+  },
+  {
+    "snippetName": "Javascript Find the maximum item of an array by given key",
+    "snippet": "const maxBy = (arr, key) => arr.reduce((a, b) => (a[key] >= b[key] ? a : b), {});"
+  },
+  {
+    "snippetName": "Javascript Find the maximum item of an array by given key",
+    "snippet": "const maxBy = <T extends Record<string, any>, K extends keyof T>(arr: T[], key: K): T => (    arr.reduce((a, b) => (a[key] >= b[key] ? a : b), {} as T));"
+  },
+  {
+    "snippetName": "Javascript Find the maximum item of an array",
+    "snippet": "const max = (arr) => Math.max(...arr);"
+  },
+  {
+    "snippetName": "Javascript Find the maximum item of an array",
+    "snippet": "const max = (arr: number[]): number => Math.max(...arr);"
+  },
+  {
+    "snippetName": "Javascript Find the minimum item of an array by given key",
+    "snippet": "const minBy = (arr, key) => arr.reduce((a, b) => (a[key] < b[key] ? a : b), {});"
+  },
+  {
+    "snippetName": "Javascript Find the minimum item of an array by given key",
+    "snippet": "const minBy = <T extends Record<string, any>, K extends keyof T>(arr: T[], key: K): T => (    arr.reduce((a, b) => (a[key] < b[key] ? a : b), {} as T));"
+  },
+  {
+    "snippetName": "Javascript Find the minimum item of an array",
+    "snippet": "const min = (arr) => Math.min(...arr);"
+  },
+  {
+    "snippetName": "Javascript Find the minimum item of an array",
+    "snippet": "const min = (arr: number[]): number => Math.min(...arr);"
+  },
+  {
+    "snippetName": "Javascript Flatten an array",
+    "snippet": "const flat = (arr) =>    [].concat.apply(        [],        arr.map((a) => (Array.isArray(a) ? flat(a) : a))    );\n// Orconst flat = (arr) => arr.reduce((a, b) => (Array.isArray(b) ? [...a, ...flat(b)] : [...a, b]), []);\n// Or// See the browser compatibility at https://caniuse.com/#feat=array-flatconst flat = (arr) => arr.flat();"
+  },
+  {
+    "snippetName": "Javascript Flatten an array",
+    "snippet": "flat(['cat', ['lion', 'tiger']]); // ['cat', 'lion', 'tiger']"
+  },
+  {
+    "snippetName": "Javascript Generate an array of alphabet characters",
+    "snippet": "const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');\n// Orconst alphabet = [...'abcdefghijklmnopqrstuvwxyz'];\n// Orconst alphabet = Array(26)    .fill(0)    .map((_, i) => String.fromCharCode(i + 97));\n// Orconst alphabet = [...Array(26).keys()].map((i) => String.fromCharCode(i + 97));\n// Orconst alphabet = [...Array(26)].map((_, i) => (i + 10).toString(36));\n// Orconst alphabet = String.fromCharCode(    ...' '        .repeat(26)        .split('')        .map((_, i) => i + 97)).split('');"
+  },
+  {
+    "snippetName": "Javascript Generate an array of alphabet characters",
+    "snippet": "const alphabet: string[] = 'abcdefghijklmnopqrstuvwxyz'.split('');\n// Orconst alphabet: string[] = [...'abcdefghijklmnopqrstuvwxyz'];\n// Orconst alphabet: string[] = Array(26)    .fill(0)    .map((_, i) => String.fromCharCode(i + 97));\n// Orconst alphabet: string[] = [...Array(26).keys()].map((i) => String.fromCharCode(i + 97));\n// Orconst alphabet: string[] = [...Array(26)].map((_, i) => (i + 10).toString(36));\n// Orconst alphabet: string[] = String.fromCharCode(    ...' '        .repeat(26)        .split('')        .map((_, i) => i + 97)).split('');"
+  },
+  {
+    "snippetName": "Javascript Get all arrays of consecutive elements",
+    "snippet": "const getConsecutiveArrays = (arr, size) => (size > arr.length ? [] : arr.slice(size - 1).map((_, i) => arr.slice(i, size + i)));"
+  },
+  {
+    "snippetName": "Javascript Get all arrays of consecutive elements",
+    "snippet": "const getConsecutiveArrays = <T,_>(arr: T[], size: number): T[][] => (size > arr.length ? [] : arr.slice(size - 1).map((_, i) => arr.slice(i, size + i)));"
+  },
+  {
+    "snippetName": "Javascript Get all n-th items of an array",
+    "snippet": "const getNthItems = (arr, nth) => arr.filter((_, i) => i % nth === nth - 1);"
+  },
+  {
+    "snippetName": "Javascript Get all n-th items of an array",
+    "snippet": "const getNthItems = <T,_>(arr: T[], nth: number): T[] => arr.filter((_, i) => i % nth === nth - 1);"
+  },
+  {
+    "snippetName": "Javascript Get all subsets of an array",
+    "snippet": "const getSubsets = (arr) => arr.reduce((prev, curr) => prev.concat(prev.map((k) => k.concat(curr))), [[]]);"
+  },
+  {
+    "snippetName": "Javascript Get all subsets of an array",
+    "snippet": "const getSubsets = <T,>(arr: T[]): T[][] => (    arr.reduce((prev, curr) => prev.concat(prev.map((k) => k.concat(curr))), [[]] as T[][]));"
+  },
+  {
+    "snippetName": "Javascript Get indices of a value in an array",
+    "snippet": "const indices = (arr, value) => arr.reduce((acc, v, i) => (v === value ? [...acc, i] : acc), []);\n// Orconst indices = (arr, value) => arr.map((v, i) => (v === value ? i : false)).filter(Boolean);"
+  },
+  {
+    "snippetName": "Javascript Get indices of a value in an array",
+    "snippet": "const indices = <T,>(arr: T[], value: T): number[] => (    arr.reduce((acc, v, i) => (v === value ? [...acc, i] : acc), [] as number[]));\n// Orconst indices = <T,>(arr: T[], value: T): number[] => (    arr.map((v, i) => (v === value ? i : false)).filter(Boolean) as number[]);"
+  },
+  {
+    "snippetName": "Javascript Get the average of an array",
+    "snippet": "const average = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;"
+  },
+  {
+    "snippetName": "Javascript Get the average of an array",
+    "snippet": "const average = (arr: number[]): number => arr.reduce((a, b) => a + b, 0) / arr.length;"
+  },
+  {
+    "snippetName": "Javascript Get the intersection of arrays",
+    "snippet": "const getIntersection = (a, ...arr) => [...new Set(a)].filter((v) => arr.every((b) => b.includes(v)));"
+  },
+  {
+    "snippetName": "Javascript Get the intersection of arrays",
+    "snippet": "const getIntersection = <T,_>(a: T[], ...arr: T[][]): T[] => [...new Set(a)].filter((v) => arr.every((b) => b.includes(v)));"
+  },
+  {
+    "snippetName": "Javascript Get the rank of an array of numbers",
+    "snippet": "const ranking = (arr) => arr.map((x, y, z) => z.filter((w) => w > x).length + 1);"
+  },
+  {
+    "snippetName": "Javascript Get the rank of an array of numbers",
+    "snippet": "const ranking = (arr: number[]): number[] => arr.map((x, y, z) => z.filter((w) => w > x).length + 1);"
+  },
+  {
+    "snippetName": "Javascript Get the sum of an array of numbers",
+    "snippet": "const sum = (arr) => arr.reduce((a, b) => a + b, 0);"
+  },
+  {
+    "snippetName": "Javascript Get the sum of an array of numbers",
+    "snippet": "const sum = (arr: number[]): number => arr.reduce((a, b) => a + b, 0);"
+  },
+  {
+    "snippetName": "Javascript Get the unique values of an array",
+    "snippet": "const unique = (arr) => [...new Set(arr)];\n// Orconst unique = (arr) => arr.filter((el, i, array) => array.indexOf(el) === i);\n// Orconst unique = (arr) => arr.reduce((acc, el) => (acc.includes(el) ? acc : [...acc, el]), []);"
+  },
+  {
+    "snippetName": "Javascript Get the unique values of an array",
+    "snippet": "const unique = <T,>(arr: T[]): T[] => [...new Set(arr)];\n// Orconst unique = <T,>(arr: T[]): T[] => arr.filter((el, i, array) => array.indexOf(el) === i);\n// Orconst unique = <T,>(arr: T[]): T[] => arr.reduce((acc, el) => (acc.includes(el) ? acc : [...acc, el]), [] as T[]);"
+  },
+  {
+    "snippetName": "Javascript Get union of arrays",
+    "snippet": "const union = (...arr) => [...new Set(arr.flat())];"
+  },
+  {
+    "snippetName": "Javascript Get union of arrays",
+    "snippet": "const union = <T,_>(...arr: T[][]): T[] => [...new Set(arr.flat())];"
+  },
+  {
+    "snippetName": "Javascript Group an array of objects by a key",
+    "snippet": "const groupBy = (arr, key) => arr.reduce((acc, item) => ((acc[item[key]] = [...(acc[item[key]] || []), item]), acc), {});"
+  },
+  {
+    "snippetName": "Javascript Group an array of objects by a key",
+    "snippet": "const groupBy = <T extends Record<string, any>, K extends keyof T>(arr: T[], key: K): Record<string, T[]> => (    arr.reduce((acc, item) => ((acc[item[key]] = [...(acc[item[key]] || []), item]), acc), {} as Record<string, T[]>));"
+  },
+  {
+    "snippetName": "Javascript Intersperse element between elements",
+    "snippet": "const intersperse = (a, s) => [...Array(2 * a.length - 1)].map((_, i) => (i % 2 ? s : a[i / 2]));"
+  },
+  {
+    "snippetName": "Javascript Intersperse element between elements",
+    "snippet": "const intersperse = <T>(a: T[], s: T): T[] => [...Array(2 * a.length - 1)].map((_, i) => (i % 2 ? s : a[i / 2]));"
+  },
+  {
+    "snippetName": "Javascript Merge two arrays",
+    "snippet": "// Merge but don't remove the duplicationsconst merge = (a, b) => a.concat(b);// Orconst merge = (a, b) => [...a, ...b];\n// Merge and remove the duplicationsconst merge = (a, b) => [...new Set(a.concat(b))];// Orconst merge = (a, b) => [...new Set([...a, ...b])];"
+  },
+  {
+    "snippetName": "Javascript Merge two arrays",
+    "snippet": "// Merge but don't remove the duplicationsconst merge = <T,_>(a: T[], b: T[]): T[] => a.concat(b);// Orconst merge = <T,_>(a: T[], b: T[]): T[] => [...a, ...b];\n// Merge and remove the duplicationsconst merge = <T,_>(a: T[], b: T[]): T[] => [...new Set(a.concat(b))];// Orconst merge = <T,_>(a: T[], b: T[]): T[] => [...new Set([...a, ...b])];"
+  },
+  {
+    "snippetName": "Javascript Partition an array based on a condition",
+    "snippet": "const partition = (arr, criteria) => arr.reduce((acc, i) => (acc[criteria(i) ? 0 : 1].push(i), acc), [[], []]);"
+  },
+  {
+    "snippetName": "Javascript Partition an array based on a condition",
+    "snippet": "const partition = <T,_>(arr: T[], criteria: (a: T) => boolean): T[][] => arr.reduce((acc, i) => (acc[criteria(i) ? 0 : 1].push(i), acc), [[], []]);"
+  },
+  {
+    "snippetName": "Javascript Remove duplicate values in an array",
+    "snippet": "const removeDuplicate = (arr) => arr.filter((i) => arr.indexOf(i) === arr.lastIndexOf(i));"
+  },
+  {
+    "snippetName": "Javascript Remove duplicate values in an array",
+    "snippet": "const removeDuplicate = <T,_>(arr: T[]): T[] => arr.filter((i) => arr.indexOf(i) === arr.lastIndexOf(i));"
+  },
+  {
+    "snippetName": "Javascript Remove falsy values from array",
+    "snippet": "const removeFalsy = (arr) => arr.filter(Boolean);"
+  },
+  {
+    "snippetName": "Javascript Remove falsy values from array",
+    "snippet": "const removeFalsy = <T,_>(arr: T[]): T[] => arr.filter(Boolean);"
+  },
+  {
+    "snippetName": "Javascript Repeat an array",
+    "snippet": "// `arr` is an arrayconst repeat = (arr, n) => [].concat(...Array(n).fill(arr));\n// Orconst repeat = (arr, n) => Array(n).fill(arr).flat();\n// Orconst repeat = (arr, n) =>    Array(arr.length * n)        .fill(0)        .map((_, i) => arr[i % arr.length]);\n// Orconst repeat = (arr, n) => Array.from({ length: arr.length * n }, (_, i) => arr[i % arr.length]);"
+  },
+  {
+    "snippetName": "Javascript Repeat an array",
+    "snippet": "const repeat = <T,_>(arr: T[], n: number): T[] => [].concat(...Array(n).fill(arr));\n// Orconst repeat = <T,_>(arr: T[], n: number): T[] => Array(n).fill(arr).flat();\n// Orconst repeat = <T,_>(arr: T[], n: number): T[] =>    Array(arr.length * n)        .fill(0)        .map((_, i) => arr[i % arr.length]);\n// Orconst repeat = <T,_>(arr: T[], n: number): T[] => Array.from({ length: arr.length * n }, (_, i) => arr[i % arr.length]);"
+  },
+  {
+    "snippetName": "Javascript Shuffle an array",
+    "snippet": "const shuffle = (arr) =>    arr        .map((a) => ({ sort: Math.random(), value: a }))        .sort((a, b) => a.sort - b.sort)        .map((a) => a.value);"
+  },
+  {
+    "snippetName": "Javascript Shuffle an array",
+    "snippet": "const shuffle = <T,_>(arr: T[]): T[] =>    arr        .map((a) => ({ sort: Math.random(), value: a }))        .sort((a, b) => a.sort - b.sort)        .map((a) => a.value);"
+  },
+  {
+    "snippetName": "Javascript Sort an array of items by given key",
+    "snippet": "const sortBy = (arr, k) => arr.concat().sort((a, b) => (a[k] > b[k] ? 1 : a[k] < b[k] ? -1 : 0));"
+  },
+  {
+    "snippetName": "Javascript Sort an array of items by given key",
+    "snippet": "const sortBy = <T extends Record<string, any>, K extends keyof T>(arr: T[], k: K): T[] => (    arr.concat().sort((a, b) => (a[k] > b[k] ? 1 : a[k] < b[k] ? -1 : 0)));"
+  },
+  {
+    "snippetName": "Javascript Sort an array of numbers",
+    "snippet": "const sort = (arr) => arr.sort((a, b) => a - b);"
+  },
+  {
+    "snippetName": "Javascript Sort an array of numbers",
+    "snippet": "const sort = (arr: number[]): number[] => arr.sort((a, b) => a - b);"
+  },
+  {
+    "snippetName": "Javascript Split an array into chunks",
+    "snippet": "const chunk = (arr, size) => arr.reduce((acc, e, i) => (i % size ? acc[acc.length - 1].push(e) : acc.push([e]), acc), []);"
+  },
+  {
+    "snippetName": "Javascript Split an array into chunks",
+    "snippet": "const chunk = <T,>(arr: T[], size: number): T[][] => (    arr.reduce((acc, e, i) => (i % size ? acc[acc.length - 1].push(e) : acc.push([e]), acc), [] as T[][]));"
+  },
+  {
+    "snippetName": "Javascript Swap the rows and columns of a matrix",
+    "snippet": "const transpose = (matrix) => matrix[0].map((col, i) => matrix.map((row) => row[i]));\n// Orconst transpose = (matrix) => matrix[0].map((col, c) => matrix.map((row, r) => matrix[r][c]));\n// Orconst transpose = (matrix) => matrix.reduce((prev, next) => next.map((item, i) => (prev[i] || []).concat(next[i])), []);"
+  },
+  {
+    "snippetName": "Javascript Swap the rows and columns of a matrix",
+    "snippet": "const transpose = <T,>(matrix: T[][]): T[][] => matrix[0].map((col, i) => matrix.map((row) => row[i]));\n// Orconst transpose = <T,>(matrix: T[][]): T[][] => matrix[0].map((col, c) => matrix.map((row, r) => matrix[r][c]));\n// Orconst transpose = <T,>(matrix: T[][]): T[][] => (    matrix.reduce((prev, next) => next.map((item, i) => (prev[i] || []).concat(next[i])), [] as T[][]));"
+  },
+  {
+    "snippetName": "Javascript Swap two array items",
+    "snippet": "// `i` must be less than `j`const swapItems = (a, i, j) => (a[i] && a[j] && [...a.slice(0, i), a[j], ...a.slice(i + 1, j), a[i], ...a.slice(j + 1)]) || a;"
+  },
+  {
+    "snippetName": "Javascript Swap two array items",
+    "snippet": "const swapItems = <T,_>(a: T[], i: number, j: number): T[] => (a[i] && a[j] && [...a.slice(0, i), a[j], ...a.slice(i + 1, j), a[i], ...a.slice(j + 1)]) || a;"
+  },
+  {
+    "snippetName": "Javascript Unzip an array of arrays",
+    "snippet": "const unzip = (arr) =>    arr.reduce(        (acc, c) => (c.forEach((v, i) => acc[i].push(v)), acc),        Array.from({ length: Math.max(...arr.map((a) => a.length)) }, (_) => [])    );"
+  },
+  {
+    "snippetName": "Javascript Unzip an array of arrays",
+    "snippet": "unzip([    ['a', 1],    ['b', 2],    ['c', 3],    ['d', 4],    ['e', 5],]); // [['a', 'b', 'c', 'd', 'e'], [1, 2, 3, 4, 5]]\n/*    a     1     b   2      c 3      d 4      e 5*/"
+  },
+  {
+    "snippetName": "Javascript Zip multiple arrays",
+    "snippet": "const zip = (...arr) => Array.from({ length: Math.max(...arr.map((a) => a.length)) }, (_, i) => arr.map((a) => a[i]));"
+  },
+  {
+    "snippetName": "Javascript Zip multiple arrays",
+    "snippet": "zip(['a', 'b', 'c', 'd', 'e'], [1, 2, 3, 4, 5]); // [['a', 1], ['b', 2], ['c', 3], ['d', 4], ['e', 5]]\n/*Does it look like a zipper?        a 1        b 2       c   3      d     4     e       5*/"
+  },
+  {
+    "snippetName": "Javascript Add AM PM suffix to an hour",
+    "snippet": "// `h` is an hour number between 0 and 23const suffixAmPm = (h) => `${h % 12 === 0 ? 12 : h % 12}${h < 12 ? 'am' : 'pm'}`;"
+  },
+  {
+    "snippetName": "Javascript Add AM PM suffix to an hour",
+    "snippet": "const suffixAmPm = (h: number): string => `${h % 12 === 0 ? 12 : h % 12}${h < 12 ? 'am' : 'pm'}`;"
+  },
+  {
+    "snippetName": "Javascript Calculate the number of difference days between two dates",
+    "snippet": "const diffDays = (date, otherDate) => Math.ceil(Math.abs(date - otherDate) / (1000 * 60 * 60 * 24));"
+  },
+  {
+    "snippetName": "Javascript Calculate the number of difference days between two dates",
+    "snippet": "const diffDays = (date: Date, otherDate: Date): number => Math.ceil(Math.abs(date.valueOf() - otherDate.valueOf()) / (1000 * 60 * 60 * 24));"
+  },
+  {
+    "snippetName": "Javascript Calculate the number of months between two dates",
+    "snippet": "const monthDiff = (startDate, endDate) => Math.max(0, (endDate.getFullYear() - startDate.getFullYear()) * 12 - startDate.getMonth() + endDate.getMonth());"
+  },
+  {
+    "snippetName": "Javascript Calculate the number of months between two dates",
+    "snippet": "const monthDiff = (startDate: Date, endDate: Date): number => Math.max(0, (endDate.getFullYear() - startDate.getFullYear()) * 12 - startDate.getMonth() + endDate.getMonth());"
+  },
+  {
+    "snippetName": "Javascript Compare two dates",
+    "snippet": "// `a` and `b` are `Date` instancesconst compare = (a, b) => a.getTime() > b.getTime();"
+  },
+  {
+    "snippetName": "Javascript Compare two dates",
+    "snippet": "const compare = (a: Date, b: Date): boolean => a.getTime() > b.getTime();"
+  },
+  {
+    "snippetName": "Javascript Convert a date to YYYY-MM-DD format",
+    "snippet": "// `date` is a `Date` objectconst formatYmd = (date) => date.toISOString().slice(0, 10);"
+  },
+  {
+    "snippetName": "Javascript Convert a date to YYYY-MM-DD format",
+    "snippet": "const formatYmd = (date: Date): string => date.toISOString().slice(0, 10);"
+  },
+  {
+    "snippetName": "Javascript Convert seconds to hh:mm:ss format",
+    "snippet": "// `s` is number of secondsconst formatSeconds = (s) => new Date(s * 1000).toISOString().substr(11, 8);\n// Orconst formatSeconds = (s) => new Date(s * 1000).toUTCString().match(/(\\d\\d:\\d\\d:\\d\\d)/)[0];\n// Orconst formatSeconds = (s) => [parseInt(s / 60 / 60), parseInt((s / 60) % 60), parseInt(s % 60)].join(':').replace(/\\b(\\d)\\b/g, '0$1');"
+  },
+  {
+    "snippetName": "Javascript Convert seconds to hh:mm:ss format",
+    "snippet": "const formatSeconds = (s: number): string => new Date(s * 1000).toISOString().substr(11, 8);\n// Orconst formatSeconds = (s: number): string => (new Date(s * 1000).toUTCString().match(/(\\d\\d:\\d\\d:\\d\\d)/) as string[])[0];\n// Orconst formatSeconds = (s: number): string => (    [parseInt(`${s / 3600}`), parseInt(`${(s / 60) % 60}`), parseInt(`${s % 60}`)].join(':').replace(/\\b(\\d)\\b/g, '0$1'));"
+  },
+  {
+    "snippetName": "Javascript Extract year, month, day, hour, minute, second and millisecond from a date",
+    "snippet": "// `date` is a `Date` objectconst extract = (date) =>    date        .toISOString()        .split(/[^0-9]/)        .slice(0, -1);\n// `extract` is an array of [year, month, day, hour, minute, second, millisecond]"
+  },
+  {
+    "snippetName": "Javascript Extract year, month, day, hour, minute, second and millisecond from a date",
+    "snippet": "const extract = (date: Date): string[] =>    date        .toISOString()        .split(/[^0-9]/)        .slice(0, -1);"
+  },
+  {
+    "snippetName": "Javascript Format a date for the given locale",
+    "snippet": "// `date` is a `Date` object// `locale` is a locale (en-US, pt-BR, for example)const format = (date, locale) => new Intl.DateTimeFormat(locale).format(date);"
+  },
+  {
+    "snippetName": "Javascript Format a date for the given locale",
+    "snippet": "const format = (date: Date, locale: string): string => new Intl.DateTimeFormat(locale).format(date);"
+  },
+  {
+    "snippetName": "Javascript Get the current quarter of a date",
+    "snippet": "const getQuarter = (d = new Date()) => Math.ceil((d.getMonth() + 1) / 3);"
+  },
+  {
+    "snippetName": "Javascript Get the current quarter of a date",
+    "snippet": "const getQuarter = (d = new Date()): number => Math.ceil((d.getMonth() + 1) / 3);"
+  },
+  {
+    "snippetName": "Javascript Get the current timestamp in seconds",
+    "snippet": "const ts = () => Math.floor(new Date().getTime() / 1000);"
+  },
+  {
+    "snippetName": "Javascript Get the current timestamp in seconds",
+    "snippet": "const ts = (): number => Math.floor(new Date().getTime() / 1000);"
+  },
+  {
+    "snippetName": "Javascript Get the day of the year from a date",
+    "snippet": "// `date` is a Date objectconst dayOfYear = (date) => Math.floor((date - new Date(date.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));"
+  },
+  {
+    "snippetName": "Javascript Get the day of the year from a date",
+    "snippet": "const dayOfYear = (date: Date): number => Math.floor((date.valueOf() - new Date(date.getFullYear(), 0, 0).valueOf()) / (1000 * 60 * 60 * 24));"
+  },
+  {
+    "snippetName": "Javascript Get the first date in the month of a date",
+    "snippet": "const getFirstDate = (d = new Date()) => new Date(d.getFullYear(), d.getMonth(), 1);"
+  },
+  {
+    "snippetName": "Javascript Get the first date in the month of a date",
+    "snippet": "const getFirstDate = (d = new Date()): Date => new Date(d.getFullYear(), d.getMonth(), 1);"
+  },
+  {
+    "snippetName": "Javascript Get the last date in the month of a date",
+    "snippet": "const getLastDate = (d = new Date()) => new Date(d.getFullYear(), d.getMonth() + 1, 0);"
+  },
+  {
+    "snippetName": "Javascript Get the last date in the month of a date",
+    "snippet": "const getLastDate = (d = new Date()): Date => new Date(d.getFullYear(), d.getMonth() + 1, 0);"
+  },
+  {
+    "snippetName": "Javascript Get the month name of a date",
+    "snippet": "// `date` is a Date objectconst getMonthName = (date) => ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', ' November', 'December'][date.getMonth()];"
+  },
+  {
+    "snippetName": "Javascript Get the month name of a date",
+    "snippet": "const getMonthName = (date: Date): string => ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', ' November', 'December'][date.getMonth()];"
+  },
+  {
+    "snippetName": "Javascript Get the number of days in given month",
+    "snippet": "// `month` is zero-based indexconst daysInMonth = (month, year) => new Date(year, month, 0).getDate();"
+  },
+  {
+    "snippetName": "Javascript Get the number of days in given month",
+    "snippet": "const daysInMonth = (month: number, year: number): number => new Date(year, month, 0).getDate();"
+  },
+  {
+    "snippetName": "Javascript Get the timezone string",
+    "snippet": "const getTimezone = () => Intl.DateTimeFormat().resolvedOptions().timeZone;"
+  },
+  {
+    "snippetName": "Javascript Get the timezone string",
+    "snippet": "const getTimezone = (): string => Intl.DateTimeFormat().resolvedOptions().timeZone;"
+  },
+  {
+    "snippetName": "Javascript Get the tomorrow date",
+    "snippet": "const tomorrow = ((d) => new Date(d.setDate(d.getDate() + 1)))(new Date());\n// Orconst tomorrow = new Date(new Date().valueOf() + 1000 * 60 * 60 * 24);"
+  },
+  {
+    "snippetName": "Javascript Get the tomorrow date",
+    "snippet": "const tomorrow: Date = ((d) => new Date(d.setDate(d.getDate() + 1)))(new Date());\n// Orconst tomorrow: Date = new Date(new Date().valueOf() + 1000 * 60 * 60 * 24);"
+  },
+  {
+    "snippetName": "Javascript Get the total number of days in a year",
+    "snippet": "const numberOfDays = (year) => ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0 ? 366 : 365);\n// Orconst numberOfDays = (year) => (new Date(year, 1, 29).getDate() === 29 ? 366 : 365);"
+  },
+  {
+    "snippetName": "Javascript Get the total number of days in a year",
+    "snippet": "const numberOfDays = (year: number): number => ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0 ? 366 : 365);\n// Orconst numberOfDays = (year: number): number => (new Date(year, 1, 29).getDate() === 29 ? 366 : 365);"
+  },
+  {
+    "snippetName": "Javascript Get the weekday of a date",
+    "snippet": "// `date` is a Date objectconst getWeekday = (date) => ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][date.getDay()];"
+  },
+  {
+    "snippetName": "Javascript Get the weekday of a date",
+    "snippet": "const getWeekday = (date: Date): string => ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][date.getDay()];"
+  },
+  {
+    "snippetName": "Javascript Get the yesterday date",
+    "snippet": "const yesterday = ((d) => new Date(d.setDate(d.getDate() - 1)))(new Date());\n// Orconst yesterday = new Date(new Date().valueOf() - 1000 * 60 * 60 * 24);"
+  },
+  {
+    "snippetName": "Javascript Get the yesterday date",
+    "snippet": "const yesterday: Date = ((d) => new Date(d.setDate(d.getDate() - 1)))(new Date());\n// Orconst yesterday: Date = new Date(new Date().valueOf() - 1000 * 60 * 60 * 24);"
+  },
+  {
+    "snippetName": "Javascript Initialize the current date but set time to midnight",
+    "snippet": "const midnightOfToday = () => new Date(new Date().setHours(0, 0, 0, 0));"
+  },
+  {
+    "snippetName": "Javascript Initialize the current date but set time to midnight",
+    "snippet": "const midnightOfToday = (): Date => new Date(new Date().setHours(0, 0, 0, 0));"
+  },
+  {
+    "snippetName": "Javascript Sort an array of dates",
+    "snippet": "// `arr` is an array of `Date` itemsconst sortDescending = (arr) => arr.sort((a, b) => a.getTime() > b.getTime());\nconst sortAscending = (arr) => arr.sort((a, b) => a.getTime() < b.getTime());"
+  },
+  {
+    "snippetName": "Javascript Sort an array of dates",
+    "snippet": "const sortDescending = (arr: Date[]): Date[] => arr.sort((a, b) => a.getTime() - b.getTime());\nconst sortAscending = (arr: Date[]): Date[] => arr.sort((a, b) => b.getTime() - a.getTime());"
+  },
+  {
+    "snippetName": "Javascript Check if an element is a descendant of another",
+    "snippet": "const isDescendant = (child, parent) => parent.contains(child);"
+  },
+  {
+    "snippetName": "Javascript Check if an element is a descendant of another",
+    "snippet": "const isDescendant = (child: Node, parent: Node): boolean => parent.contains(child);"
+  },
+  {
+    "snippetName": "Javascript Check if an element is focused",
+    "snippet": "const hasFocus = (ele) => ele === document.activeElement;"
+  },
+  {
+    "snippetName": "Javascript Check if an element is focused",
+    "snippet": "const hasFocus = (ele: Node): boolean => ele === document.activeElement;"
+  },
+  {
+    "snippetName": "Javascript Check if the touch events are supported",
+    "snippet": "const touchSupported = () => 'ontouchstart' in window || (window.DocumentTouch && document instanceof window.DocumentTouch);"
+  },
+  {
+    "snippetName": "Javascript Check if the touch events are supported",
+    "snippet": "const touchSupported = (): boolean => (    'ontouchstart' in window || (window as any)['DocumentTouch'] && document instanceof (window as any)['DocumentTouch']);"
+  },
+  {
+    "snippetName": "Javascript Check if user scrolls to the bottom of the page",
+    "snippet": "const isAtBottom = () => document.documentElement.clientHeight + window.scrollY >= document.documentElement.scrollHeight;"
+  },
+  {
+    "snippetName": "Javascript Check if user scrolls to the bottom of the page",
+    "snippet": "const isAtBottom = (): boolean => document.documentElement.clientHeight + window.scrollY >= document.documentElement.scrollHeight;"
+  },
+  {
+    "snippetName": "Javascript Detect Internet Explorer browser",
+    "snippet": "const isIE = !!document.documentMode;"
+  },
+  {
+    "snippetName": "Javascript Detect Internet Explorer browser",
+    "snippet": "const isIE = !!(document as any).documentMode;"
+  },
+  {
+    "snippetName": "Javascript Detect macOS browser",
+    "snippet": "const isMacBrowser = /Mac|iPod|iPhone|iPad/.test(navigator.platform);"
+  },
+  {
+    "snippetName": "Javascript Detect macOS browser",
+    "snippet": "const isMacBrowser: boolean = /Mac|iPod|iPhone|iPad/.test(navigator.platform);"
+  },
+  {
+    "snippetName": "Javascript Get all siblings of an element",
+    "snippet": "const siblings = (ele) => [].slice.call(ele.parentNode.children).filter((child) => child !== ele);"
+  },
+  {
+    "snippetName": "Javascript Get all siblings of an element",
+    "snippet": "const siblings = (ele: Node): Node[] => (ele.parentNode ? [].slice.call(ele.parentNode.children).filter((child) => child !== ele) : []);"
+  },
+  {
+    "snippetName": "Javascript Get the position of an element relative to the document",
+    "snippet": "const getPosition = (ele) => ((r = ele.getBoundingClientRect()), { left: r.left + window.scrollX, top: r.top + window.scrollY });"
+  },
+  {
+    "snippetName": "Javascript Get the position of an element relative to the document",
+    "snippet": "getPosition(document.body); // { left: 0, top: 0 }"
+  },
+  {
+    "snippetName": "Javascript Get the selected text",
+    "snippet": "const getSelectedText = () => window.getSelection().toString();"
+  },
+  { "snippetName": "Javascript Get the selected text", "snippet": "" },
+  {
+    "snippetName": "Javascript Go back to the previous page",
+    "snippet": "history.back();\n// Orhistory.go(-1);"
+  },
+  { "snippetName": "Javascript Go back to the previous page", "snippet": "" },
+  {
+    "snippetName": "Javascript Hide an element",
+    "snippet": "// Pick the method that is suitable for your use caseconst hide = (ele) => (ele.style.display = 'none');\n// Orconst hide = (ele) => (ele.style.visibility = 'hidden');\n// Orconst hide = (ele) => (ele.hidden = true);"
+  },
+  {
+    "snippetName": "Javascript Hide an element",
+    "snippet": "const hide = (ele: HTMLElement): string => (ele.style.display = 'none');\n// Orconst hide = (ele: HTMLElement): string => (ele.style.visibility = 'hidden');\n// Orconst hide = (ele: HTMLElement): boolean => (ele.hidden = true);"
+  },
+  {
+    "snippetName": "Javascript Insert an element after other one",
+    "snippet": "const insertAfter = (ele, anotherEle) => anotherEle.parentNode.insertBefore(ele, anotherEle.nextSibling);\n// Orconst insertAfter = (ele, anotherEle) => anotherEle.insertAdjacentElement('afterend', ele);"
+  },
+  {
+    "snippetName": "Javascript Insert an element after other one",
+    "snippet": "const insertAfter = (ele: Element, anotherEle: Element): Element | null => (anotherEle.parentNode ? anotherEle.parentNode.insertBefore(ele, anotherEle.nextSibling) : null);\n// Orconst insertAfter = (ele: Element, anotherEle: Element): Element | null => anotherEle.insertAdjacentElement('afterend', ele);"
+  },
+  {
+    "snippetName": "Javascript Insert an element before other one",
+    "snippet": "const insertBefore = (ele, anotherEle) => anotherEle.parentNode.insertBefore(ele, anotherEle);\n// Orconst insertBefore = (ele, anotherEle) => anotherEle.insertAdjacentElement('beforebegin', ele);"
+  },
+  {
+    "snippetName": "Javascript Insert an element before other one",
+    "snippet": "const insertBefore = (ele: Element, anotherEle: Element): Element | null => (anotherEle.parentNode ? anotherEle.parentNode.insertBefore(ele, anotherEle) : null);\n// Orconst insertBefore = (ele: Element, anotherEle: Element) => anotherEle.insertAdjacentElement('beforebegin', ele);"
+  },
+  {
+    "snippetName": "Javascript Insert given HTML after an element",
+    "snippet": "const insertHtmlAfter = (html, ele) => ele.insertAdjacentHTML('afterend', html);"
+  },
+  {
+    "snippetName": "Javascript Insert given HTML after an element",
+    "snippet": "const insertHtmlAfter = (html: string, ele: Element): void => ele.insertAdjacentHTML('afterend', html);"
+  },
+  {
+    "snippetName": "Javascript Insert given HTML before an element",
+    "snippet": "const insertHtmlBefore = (html, ele) => ele.insertAdjacentHTML('beforebegin', html);"
+  },
+  {
+    "snippetName": "Javascript Insert given HTML before an element",
+    "snippet": "const insertHtmlBefore = (html: string, ele: Element): void => ele.insertAdjacentHTML('beforebegin', html);"
+  },
+  {
+    "snippetName": "Javascript Redirect to another page",
+    "snippet": "const goTo = (url) => (location.href = url);"
+  },
+  {
+    "snippetName": "Javascript Redirect to another page",
+    "snippet": "const goTo = (url: string): string => (location.href = url);"
+  },
+  {
+    "snippetName": "Javascript Reload the current page",
+    "snippet": "const reload = () => location.reload();\n// Orconst reload = () => (location.href = location.href);"
+  },
+  {
+    "snippetName": "Javascript Reload the current page",
+    "snippet": "const reload = (): void => location.reload();\n// Orconst reload = (): string => (location.href = location.href);"
+  },
+  {
+    "snippetName": "Javascript Replace an element",
+    "snippet": "const replace = (ele, newEle) => ele.parentNode.replaceChild(newEle, ele);"
+  },
+  {
+    "snippetName": "Javascript Replace an element",
+    "snippet": "const replace = (ele: Element, newEle: Element): Element | null => (ele.parentNode ? ele.parentNode.replaceChild(newEle, ele) : null);"
+  },
+  {
+    "snippetName": "Javascript Scroll to top of the page",
+    "snippet": "const goToTop = () => window.scrollTo(0, 0);"
+  },
+  {
+    "snippetName": "Javascript Scroll to top of the page",
+    "snippet": "const goToTop = (): void => window.scrollTo(0, 0);"
+  },
+  {
+    "snippetName": "Javascript Serialize form data",
+    "snippet": "const serialize = (formEle) => Array.from(new FormData(formEle)).reduce((p, [k, v]) => Object.assign({}, p, { [k]: p[k] ? (Array.isArray(p[k]) ? p[k] : [p[k]]).concat(v) : v }), {});"
+  },
+  { "snippetName": "Javascript Serialize form data", "snippet": "" },
+  {
+    "snippetName": "Javascript Show an element",
+    "snippet": "const show = (ele) => (ele.style.display = '');"
+  },
+  {
+    "snippetName": "Javascript Show an element",
+    "snippet": "const show = (ele: HTMLElement): string => (ele.style.display = '');"
+  },
+  {
+    "snippetName": "Javascript Strip HTML from a given text",
+    "snippet": "const stripHtml = (html) => new DOMParser().parseFromString(html, 'text/html').body.textContent || '';"
+  },
+  {
+    "snippetName": "Javascript Strip HTML from a given text",
+    "snippet": "const stripHtml = (html: string): string => new DOMParser().parseFromString(html, 'text/html').body.textContent || '';"
+  },
+  {
+    "snippetName": "Javascript Toggle an element",
+    "snippet": "const toggle = (ele) => (ele.style.display = ele.style.display === 'none' ? 'block' : 'none');\n// Orconst toggle = (ele) => (ele.hidden = !ele.hidden);"
+  },
+  {
+    "snippetName": "Javascript Toggle an element",
+    "snippet": "const toggle = (ele: HTMLElement): string => (ele.style.display = ele.style.display === 'none' ? 'block' : 'none');\n// Orconst toggle = (ele: HTMLElement): boolean => (ele.hidden = !ele.hidden);"
+  },
+  {
+    "snippetName": "Javascript Box handler",
+    "snippet": "const boxHandler = (x) => ({ next: (f) => boxHandler(f(x)), done: (f) => f(x) });"
+  },
+  {
+    "snippetName": "Javascript Box handler",
+    "snippet": "// First exampleconst getPercentNumber = (str) =>    boxHandler(str)        .next((str) => str.replace(/\\%/, ''))        .next((str) => parseFloat(str))        .done((res) => res * 0.01);\ngetPercentNumber('50%'); // 0.5\n// Second exampleconst getMoney = (price) => Number.parseFloat(price.replace(/\\$/, ''));const getPercent = (percent) => Number.parseFloat(percent.replace(/\\%/)) * 0.01;\nconst getDiscountPrice = (price, discount) =>    boxHandler(getMoney(price))        .done((cents) => boxHandler(getPercent(discount)).next((save) => cents - cents * save))        .done((res) => res);\ngetDiscountPrice('$6.00', '20%'); // 4.8"
+  },
+  {
+    "snippetName": "Javascript Check if a value is a function",
+    "snippet": "const isFunction = (v) => ['[object Function]', '[object GeneratorFunction]', '[object AsyncFunction]', '[object Promise]'].includes(Object.prototype.toString.call(v));"
+  },
+  {
+    "snippetName": "Javascript Check if a value is a function",
+    "snippet": "isFunction(function () {}); // trueisFunction(function* () {}); // trueisFunction(async function () {}); // true"
+  },
+  {
+    "snippetName": "Javascript Check if a value is a generator function",
+    "snippet": "const isGeneratorFunction = (v) => Object.prototype.toString.call(v) === '[object GeneratorFunction]';"
+  },
+  {
+    "snippetName": "Javascript Check if a value is a generator function",
+    "snippet": "isGeneratorFunction(function () {}); // falseisGeneratorFunction(function* () {}); // true"
+  },
+  {
+    "snippetName": "Javascript Check if a value is an async function",
+    "snippet": "const isAsyncFunction = (v) => Object.prototype.toString.call(v) === '[object AsyncFunction]';"
+  },
+  {
+    "snippetName": "Javascript Check if a value is an async function",
+    "snippet": "isAsyncFunction(function () {}); // falseisAsyncFunction(function* () {}); // falseisAsyncFunction(async function () {}); // true"
+  },
+  {
+    "snippetName": "Javascript Compose functions from left to right",
+    "snippet": "// Compose functions from left to rightconst pipe =    (...fns) =>    (x) =>        fns.reduce((y, f) => f(y), x);"
+  },
+  {
+    "snippetName": "Javascript Compose functions from left to right",
+    "snippet": "const lowercase = (str) => str.toLowerCase();const capitalize = (str) => `${str.charAt(0).toUpperCase()}${str.slice(1)}`;const reverse = (str) => str.split('').reverse().join('');\nconst fn = pipe(lowercase, capitalize, reverse);\n// We will execute `lowercase`, `capitalize` and `reverse` in orderfn('Hello World') === 'dlrow olleH';"
+  },
+  {
+    "snippetName": "Javascript Compose functions",
+    "snippet": "// Compose functions from right to leftconst compose =    (...fns) =>    (x) =>        fns.reduceRight((y, f) => f(y), x);"
+  },
+  {
+    "snippetName": "Javascript Compose functions",
+    "snippet": "const lowercase = (str) => str.toLowerCase();const capitalize = (str) => `${str.charAt(0).toUpperCase()}${str.slice(1)}`;const reverse = (str) => str.split('').reverse().join('');\nconst fn = compose(reverse, capitalize, lowercase);\n// We will execute `lowercase`, `capitalize` and `reverse` in orderfn('Hello World') === 'dlrow olleH';"
+  },
+  {
+    "snippetName": "Javascript Create a function that accepts a single argument",
+    "snippet": "const unary = (fn) => (arg) => fn(arg);"
+  },
+  {
+    "snippetName": "Javascript Create a function that accepts a single argument",
+    "snippet": "['1', '2', '3', '4', '5'].map(unary(parseInt)); // [1, 2, 3, 4, 5]"
+  },
+  {
+    "snippetName": "Javascript Create an empty function",
+    "snippet": "const noop = () => {};\n// Orconst noop = Function();// calling Function() might be detected as using eval by some security tools"
+  },
+  { "snippetName": "Javascript Create an empty function", "snippet": "" },
+  {
+    "snippetName": "Javascript Curry a function",
+    "snippet": "const curry = (fn, ...args) => (fn.length <= args.length ? fn(...args) : curry.bind(null, fn, ...args));"
+  },
+  {
+    "snippetName": "Javascript Curry a function",
+    "snippet": "const sum = (a, b, c) => a + b + c;curry(sum)(1)(2)(3); // 6curry(sum)(1, 2, 3); // 6curry(sum, 1)(2, 3); // 6curry(sum, 1)(2)(3); // 6curry(sum, 1, 2)(3); // 6curry(sum, 1, 2, 3); // 6"
+  },
+  {
+    "snippetName": "Javascript Delay the evaluation of a function",
+    "snippet": "// returns a new version of `fn` that returns values as lazy evaluableconst thunkfy =    (fn) =>    (...args) =>    () =>        fn(...args);"
+  },
+  {
+    "snippetName": "Javascript Delay the evaluation of a function",
+    "snippet": "const heavyComputation = (x) => doStuff(x);const unnecessarySlow = manyThings.map(heavyComputation).find((result) => result.criteria);const probablyFaster = manyThings.map(thunkfy(heavyComputation)).find((thunk) => thunk().criteria);"
+  },
+  {
+    "snippetName": "Javascript Execute a function once",
+    "snippet": "const once = (fn) =>    (        (ran = false) =>        () =>            ran ? fn : ((ran = !ran), (fn = fn()))    )();"
+  },
+  {
+    "snippetName": "Javascript Execute a function once",
+    "snippet": "let n = 0;const incOnce = once(() => ++n);incOnce(); // n = 1incOnce(); // n = 1incOnce(); // n = 1"
+  },
+  {
+    "snippetName": "Javascript Flip the arguments of a function",
+    "snippet": "// Reverse the order of argumentsconst flip =    (fn) =>    (...args) =>        fn(...args.reverse());\n// For binary functionsconst flip = (fn) => (b, a) => fn(a, b);\n// Or for curried functionsconst flip = (fn) => (b) => (a) => fn(a)(b);"
+  },
+  {
+    "snippetName": "Javascript Flip the arguments of a function",
+    "snippet": "const isParent = (parent, child) => parent.children.includes(child);const isChild = flip(isParent);"
+  },
+  {
+    "snippetName": "Javascript Identity function",
+    "snippet": "const identity = (x) => x;"
+  },
+  { "snippetName": "Javascript Identity function", "snippet": "" },
+  {
+    "snippetName": "Javascript Logical xor operator",
+    "snippet": "// returns `true` if one of the arguments is truthy and the other is falsy\nconst xor = (a, b) => (a && !b) || (!a && b);\n// Orconst xor = (a, b) => !(!a && !b) && !(a && b);\n// Orconst xor = (a, b) => Boolean(!a ^ !b);"
+  },
+  {
+    "snippetName": "Javascript Logical xor operator",
+    "snippet": "xor(true, true); // falsexor(false, false); // falsexor(true, false); // truexor(false, true); // true"
+  },
+  {
+    "snippetName": "Javascript Memoize a function",
+    "snippet": "const memoize = (fn) =>    (        (cache = Object.create(null)) =>        (arg) =>            cache[arg] || (cache[arg] = fn(arg))    )();"
+  },
+  {
+    "snippetName": "Javascript Memoize a function",
+    "snippet": "// Calculate Fibonacci numbersconst fibo = memoize((n) => (n <= 2 ? 1 : fibo(n - 1) + fibo(n - 2)));\nfibo(1); // 1fibo(2); // 1fibo(3); // 2fibo(4); // 3fibo(5); // 5fibo(6); // 8"
+  },
+  {
+    "snippetName": "Javascript Partially apply a function",
+    "snippet": "const partial =    (fn, ...a) =>    (...b) =>        fn(...a, ...b);"
+  },
+  {
+    "snippetName": "Javascript Partially apply a function",
+    "snippet": "const sum = (x, y) => x + y;const inc = partial(sum, 1);inc(9); // 10"
+  },
+  {
+    "snippetName": "Javascript Uncurry a function",
+    "snippet": "// `fn` is a curried function// `n` is the depth of parametersconst uncurry =    (fn, n = 1) =>    (...args) =>        (            (acc) => (args) =>                args.reduce((x, y) => x(y), acc)        )(fn)(args.slice(0, n));"
+  },
+  {
+    "snippetName": "Javascript Uncurry a function",
+    "snippet": "const sum = (a) => (b) => (c) => a + b + c;uncurry(sum, 1)(1)(2)(3); // 6uncurry(sum, 2)(1, 2)(3); // 6uncurry(sum, 3)(1, 2, 3); // 6"
+  },
+  {
+    "snippetName": "Javascript Calculate the angle of a line defined by two points",
+    "snippet": "// In radiansconst radiansAngle = (p1, p2) => Math.atan2(p2.y - p1.y, p2.x - p1.x);\n// In degreesconst degreesAngle = (p1, p2) => (Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180) / Math.PI;"
+  },
+  {
+    "snippetName": "Javascript Calculate the angle of a line defined by two points",
+    "snippet": "interface Point {    x: number;    y: number;}\nconst radiansAngle = (p1: Point, p2: Point): number => Math.atan2(p2.y - p1.y, p2.x - p1.x);\nconst degreesAngle = (p1: Point, p2: Point): number => (Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180) / Math.PI;"
+  },
+  {
+    "snippetName": "Javascript Calculate the distance between two points",
+    "snippet": "const distance = (p1, p2) => Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));"
+  },
+  {
+    "snippetName": "Javascript Calculate the distance between two points",
+    "snippet": "interface Point {    x: number;    y: number;}\nconst distance = (p1: Point, p2: Point): number => Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));"
+  },
+  {
+    "snippetName": "Javascript Calculate the linear interpolation between two numbers",
+    "snippet": "const lerp = (a, b, amount) => (1 - amount) * a + amount * b;"
+  },
+  {
+    "snippetName": "Javascript Calculate the linear interpolation between two numbers",
+    "snippet": "const lerp = (a: number, b: number, amount: number): number => (1 - amount) * a + amount * b;"
+  },
+  {
+    "snippetName": "Javascript Calculate the midpoint between two points",
+    "snippet": "const midpoint = (p1, p2) => [(p1.x + p2.x) / 2, (p1.y + p2.y) / 2];"
+  },
+  {
+    "snippetName": "Javascript Calculate the midpoint between two points",
+    "snippet": "interface Point {    x: number;    y: number;}\nconst midpoint = (p1: Point, p2: Point): number[] => [(p1.x + p2.x) / 2, (p1.y + p2.y) / 2];"
+  },
+  {
+    "snippetName": "Javascript Check if a point is inside a rectangle",
+    "snippet": "const isInside = (point, rect) => point.x > rect.left && point.x < rect.right && point.y > rect.top && point.y < rect.bottom;"
+  },
+  {
+    "snippetName": "Javascript Check if a point is inside a rectangle",
+    "snippet": "interface Point {    x: number;    y: number;}\ninterface Rect {    bottom: number;    left: number;    top: number;    right: number;}\nconst isInside = (point: Point, rect: Rect): boolean => point.x > rect.left && point.x < rect.right && point.y > rect.top && point.y < rect.bottom;"
+  },
+  {
+    "snippetName": "Javascript Check if a rectangle contains other one",
+    "snippet": "// Returns true if `a` contains `b`// (x1, y1) and (x2, y2) are top-left and bottom-right cornersconst contains = (a, b) => a.x1 <= b.x1 && a.y1 <= b.y1 && a.x2 >= b.x2 && a.y2 >= b.y2;"
+  },
+  {
+    "snippetName": "Javascript Check if a rectangle contains other one",
+    "snippet": "interface Rect {    x1: number;    x2: number;    y1: number;    y2: number;}\nconst contains = (a: Rect, b: Rect): boolean => a.x1 <= b.x1 && a.y1 <= b.y1 && a.x2 >= b.x2 && a.y2 >= b.y2;"
+  },
+  {
+    "snippetName": "Javascript Check if a rectangle overlaps other one",
+    "snippet": "// Returns true if `a` overlaps `b`// (x1, y1) and (x2, y2) are top-left and bottom-right cornersconst overlaps = (a, b) => (a.x1 < b.x2 && b.x1 < a.x2) || (a.y1 < b.y2 && b.y1 < a.y2);"
+  },
+  {
+    "snippetName": "Javascript Check if a rectangle overlaps other one",
+    "snippet": "interface Rect {    x1: number;    x2: number;    y1: number;    y2: number;}\nconst contains = (a: Rect, b: Rect): boolean => (a.x1 < b.x2 && b.x1 < a.x2) || (a.y1 < b.y2 && b.y1 < a.y2);"
+  },
+  {
+    "snippetName": "Javascript Convert degrees to radians",
+    "snippet": "const degsToRads = (deg) => (deg * Math.PI) / 180.0;"
+  },
+  {
+    "snippetName": "Javascript Convert degrees to radians",
+    "snippet": "const degsToRads = (deg: number): number => (deg * Math.PI) / 180.0;"
+  },
+  {
+    "snippetName": "Javascript Convert radians to degrees",
+    "snippet": "const radsToDegs = (rad) => (rad * 180) / Math.PI;"
+  },
+  {
+    "snippetName": "Javascript Convert radians to degrees",
+    "snippet": "const radsToDegs = (rad: number): number => (rad * 180) / Math.PI;"
+  },
+  {
+    "snippetName": "Javascript Normalize the ratio of a number in a range",
+    "snippet": "const normalizeRatio = (value, min, max) => (value - min) / (max - min);"
+  },
+  {
+    "snippetName": "Javascript Normalize the ratio of a number in a range",
+    "snippet": "const normalizeRatio = (value: number, min: number, max: number): number => (value - min) / (max - min);"
+  },
+  {
+    "snippetName": "Javascript Round a number to the nearest multiple of a given value",
+    "snippet": "const roundNearest = (value, nearest) => Math.round(value / nearest) * nearest;"
+  },
+  {
+    "snippetName": "Javascript Round a number to the nearest multiple of a given value",
+    "snippet": "const roundNearest = (value: number, nearest: number): number => Math.round(value / nearest) * nearest;"
+  },
+  {
+    "snippetName": "Javascript Check if the code is running in Jest",
+    "snippet": "const isRunningInJest = typeof process !== 'undefined' && process.env.JEST_WORKER_ID !== undefined;"
+  },
+  {
+    "snippetName": "Javascript Check if the code is running in Jest",
+    "snippet": "const isRunningInJest: boolean = typeof process !== 'undefined' && process.env.JEST_WORKER_ID !== undefined;"
+  },
+  {
+    "snippetName": "Javascript Check if the code is running in NodeJS",
+    "snippet": "const isNode = typeof process !== 'undefined' && process.versions != null && process.versions.node != null;"
+  },
+  {
+    "snippetName": "Javascript Check if the code is running in NodeJS",
+    "snippet": "const isNode: boolean = typeof process !== 'undefined' && process.versions != null && process.versions.node != null;"
+  },
+  {
+    "snippetName": "Javascript Check if the code is running in the browser",
+    "snippet": "const isBrowser = typeof window === 'object' && typeof document === 'object';"
+  },
+  {
+    "snippetName": "Javascript Check if the code is running in the browser",
+    "snippet": "const isBrowser: boolean = typeof window === 'object' && typeof document === 'object';"
+  },
+  {
+    "snippetName": "Javascript Clear all cookies",
+    "snippet": "const clearCookies = () => document.cookie.split(';').forEach((c) => (document.cookie = c.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date().toUTCString()};path=/`)));"
+  },
+  {
+    "snippetName": "Javascript Clear all cookies",
+    "snippet": "const clearCookies = (): void => document.cookie.split(';').forEach((c) => (document.cookie = c.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date().toUTCString()};path=/`)));"
+  },
+  {
+    "snippetName": "Javascript Convert 3 digits color to 6 digits color",
+    "snippet": "const toFullHexColor = (color) =>    `#${(color.startsWith('#') ? color.slice(1) : color)        .split('')        .map((c) => `${c}${c}`)        .join('')}`;"
+  },
+  {
+    "snippetName": "Javascript Convert 3 digits color to 6 digits color",
+    "snippet": "const toFullHexColor = (color: string): string =>    `#${(color.startsWith('#') ? color.slice(1) : color)        .split('')        .map((c) => `${c}${c}`)        .join('')}`;"
+  },
+  {
+    "snippetName": "Javascript Convert Celsius to Fahrenheit",
+    "snippet": "const celsiusToFahrenheit = (celsius) => (celsius * 9) / 5 + 32;"
+  },
+  {
+    "snippetName": "Javascript Convert Celsius to Fahrenheit",
+    "snippet": "const celsiusToFahrenheit = (celsius: number): number => (celsius * 9) / 5 + 32;"
+  },
+  {
+    "snippetName": "Javascript Convert cookie to object",
+    "snippet": "const cookies = document.cookie    .split(';')    .map((item) => item.split('='))    .reduce((acc, [k, v]) => (acc[k.trim().replace('\"', '')] = v) && acc, {});"
+  },
+  { "snippetName": "Javascript Convert cookie to object", "snippet": "" },
+  {
+    "snippetName": "Javascript Convert Fahrenheit to Celsius",
+    "snippet": "const fahrenheitToCelsius = (fahrenheit) => ((fahrenheit - 32) * 5) / 9;"
+  },
+  {
+    "snippetName": "Javascript Convert Fahrenheit to Celsius",
+    "snippet": "const fahrenheitToCelsius = (fahrenheit: number): number => ((fahrenheit - 32) * 5) / 9;"
+  },
+  {
+    "snippetName": "Javascript Convert hex to rgb",
+    "snippet": "const hexToRgb = (hex) =>    hex        .replace(/^#?([a-f\\d])([a-f\\d])([a-f\\d])$/i, (_, r, g, b) => `#${r}${r}${g}${g}${b}${b}`)        .substring(1)        .match(/.{2}/g)        .map((x) => parseInt(x, 16));"
+  },
+  {
+    "snippetName": "Javascript Convert hex to rgb",
+    "snippet": "const hexToRgb = (hex: string): string =>    hex        .replace(/^#?([a-f\\d])([a-f\\d])([a-f\\d])$/i, (_, r, g, b) => `#${r}${r}${g}${g}${b}${b}`)        .substring(1)        .match(/.{2}/g)        .map((x) => parseInt(x, 16));"
+  },
+  {
+    "snippetName": "Javascript Convert rgb color to hex",
+    "snippet": "const rgbToHex = (red, green, blue) => `#${((1 << 24) + (red << 16) + (green << 8) + blue).toString(16).slice(1)}`;\n// Orconst rgbToHex = (red, green, blue) => `#${[red, green, blue].map((v) => v.toString(16).padStart(2, '0')).join('')}`;"
+  },
+  {
+    "snippetName": "Javascript Convert rgb color to hex",
+    "snippet": "const rgbToHex = (red: number, green: number, blue: number): string => `#${((1 << 24) + (red << 16) + (green << 8) + blue).toString(16).slice(1)}`;\n// Orconst rgbToHex = (red: number, green: number, blue: number): string => `#${[red, green, blue].map((v) => v.toString(16).padStart(2, '0')).join('')}`;"
+  },
+  {
+    "snippetName": "Javascript Convert URL parameters to object",
+    "snippet": "const getUrlParams = (query) => Array.from(new URLSearchParams(query)).reduce((p, [k, v]) => Object.assign({}, p, { [k]: p[k] ? (Array.isArray(p[k]) ? p[k] : [p[k]]).concat(v) : v }), {});"
+  },
+  {
+    "snippetName": "Javascript Convert URL parameters to object",
+    "snippet": "const getUrlParams = (query: string): Record<string, string> => (    Array.from(new URLSearchParams(query)).reduce((p, [k, v]) => Object.assign({}, p, { [k]: p[k] ? (Array.isArray(p[k]) ? p[k] : [p[k]]).concat(v) : v }), {} as Record<string, string>));"
+  },
+  {
+    "snippetName": "Javascript Decode a JWT token",
+    "snippet": "const decode = (token) =>    decodeURIComponent(        atob(token.split('.')[1].replace('-', '+').replace('_', '/'))            .split('')            .map((c) => `%${('00' + c.charCodeAt(0).toString(16)).slice(-2)}`)            .join('')    );"
+  },
+  {
+    "snippetName": "Javascript Decode a JWT token",
+    "snippet": "const decode = (token: string): string =>    decodeURIComponent(        atob(token.split('.')[1].replace('-', '+').replace('_', '/'))            .split('')            .map((c) => `%${('00' + c.charCodeAt(0).toString(16)).slice(-2)}`)            .join('')    );"
+  },
+  {
+    "snippetName": "Javascript Detect dark mode",
+    "snippet": "const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;"
+  },
+  {
+    "snippetName": "Javascript Detect dark mode",
+    "snippet": "const isDarkMode: boolean = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;"
+  },
+  {
+    "snippetName": "Javascript Easing functions",
+    "snippet": "// Some easing functions// See https://gist.github.com/gre/1650294 and https://easings.net\nconst linear = (t) => t;\nconst easeInQuad = (t) => t * t;const easeOutQuad = (t) => t * (2 - t);const easeInOutQuad = (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);\nconst easeInCubic = (t) => t * t * t;const easeOutCubic = (t) => --t * t * t + 1;const easeInOutCubic = (t) => (t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1);\nconst easeInQuart = (t) => t * t * t * t;const easeOutQuart = (t) => 1 - --t * t * t * t;const easeInOutQuart = (t) => (t < 0.5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t);\nconst easeInQuint = (t) => t * t * t * t * t;const easeOutQuint = (t) => 1 + --t * t * t * t * t;const easeInOutQuint = (t) => (t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t);\nconst easeInSine = (t) => 1 + Math.sin((Math.PI / 2) * t - Math.PI / 2);const easeOutSine = (t) => Math.sin((Math.PI / 2) * t);const easeInOutSine = (t) => (1 + Math.sin(Math.PI * t - Math.PI / 2)) / 2;\nconst easeInElastic = (t) => (0.04 - 0.04 / t) * Math.sin(25 * t) + 1;const easeOutElastic = (t) => ((0.04 * t) / --t) * Math.sin(25 * t);const easeInOutElastic = (t) => ((t -= 0.5) < 0 ? (0.02 + 0.01 / t) * Math.sin(50 * t) : (0.02 - 0.01 / t) * Math.sin(50 * t) + 1);"
+  },
+  {
+    "snippetName": "Javascript Easing functions",
+    "snippet": "const linear = (t: number): number => t;\nconst easeInQuad = (t: number): number => t * t;const easeOutQuad = (t: number): number => t * (2 - t);const easeInOutQuad = (t: number): number => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);\nconst easeInCubic = (t: number): number => t * t * t;const easeOutCubic = (t: number): number => --t * t * t + 1;const easeInOutCubic = (t: number): number => (t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1);\nconst easeInQuart = (t: number): number => t * t * t * t;const easeOutQuart = (t: number): number => 1 - --t * t * t * t;const easeInOutQuart = (t: number): number => (t < 0.5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t);\nconst easeInQuint = (t: number): number => t * t * t * t * t;const easeOutQuint = (t: number): number => 1 + --t * t * t * t * t;const easeInOutQuint = (t: number): number => (t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t);\nconst easeInSine = (t: number): number => 1 + Math.sin((Math.PI / 2) * t - Math.PI / 2);const easeOutSine = (t: number): number => Math.sin((Math.PI / 2) * t);const easeInOutSine = (t: number): number => (1 + Math.sin(Math.PI * t - Math.PI / 2)) / 2;\nconst easeInElastic = (t: number): number => (0.04 - 0.04 / t) * Math.sin(25 * t) + 1;const easeOutElastic = (t: number): number => ((0.04 * t) / --t) * Math.sin(25 * t);const easeInOutElastic = (t: number): number => ((t -= 0.5) < 0 ? (0.02 + 0.01 / t) * Math.sin(50 * t) : (0.02 - 0.01 / t) * Math.sin(50 * t) + 1);"
+  },
+  {
+    "snippetName": "Javascript Emulate a dice throw",
+    "snippet": "const throwdice = () => ~~(Math.random() * 6) + 1;"
+  },
+  {
+    "snippetName": "Javascript Emulate a dice throw",
+    "snippet": "const throwdice = (): number => ~~(Math.random() * 6) + 1;"
+  },
+  {
+    "snippetName": "Javascript Encode a URL",
+    "snippet": "// `encodeURIComponent` doesn't encode -_.!~*'()const encode = (url) => encodeURIComponent(url).replace(/!/g, '%21').replace(/~/g, '%7E').replace(/\\*/g, '%2A').replace(/'/g, '%27').replace(/\\(/g, '%28').replace(/\\)/g, '%29').replace(/%20/g, '+');"
+  },
+  {
+    "snippetName": "Javascript Encode a URL",
+    "snippet": "const encode = (url: string): string =>    encodeURIComponent(url).replace(/!/g, '%21').replace(/~/g, '%7E').replace(/\\*/g, '%2A').replace(/'/g, '%27').replace(/\\(/g, '%28').replace(/\\)/g, '%29').replace(/%20/g, '+');"
+  },
+  {
+    "snippetName": "Javascript Generate an unique and increment id",
+    "snippet": "const uid = (() => ((id = 0), () => id++))();"
+  },
+  {
+    "snippetName": "Javascript Generate an unique and increment id",
+    "snippet": "uid(); // 0uid(); // 1uid(); // 2uid(); // 3"
+  },
+  {
+    "snippetName": "Javascript Get the first defined and non null argument",
+    "snippet": "const coalesce = (...args) => args.find((item) => item !== undefined && item !== null);\n// Orconst coalesce = (...args) => args.find((item) => ![undefined, null].includes(item));"
+  },
+  {
+    "snippetName": "Javascript Get the first defined and non null argument",
+    "snippet": "const coalesce = (...args: any[]): any[] => args.find((item) => item !== undefined && item !== null);\n// Orconst coalesce = (...args: any[]): any[] => args.find((item) => ![undefined, null].includes(item));"
+  },
+  {
+    "snippetName": "Javascript Get the value of a cookie",
+    "snippet": "const cookie = (name) => `; ${document.cookie}`.split(`; ${name}=`).pop().split(';').shift();"
+  },
+  {
+    "snippetName": "Javascript Get the value of a cookie",
+    "snippet": "cookie('_ga'); // GA1.2.825309271.1581874719"
+  },
+  {
+    "snippetName": "Javascript Get the value of a param from a URL",
+    "snippet": "const getParam = (url, param) => new URLSearchParams(new URL(url).search).get(param);"
+  },
+  {
+    "snippetName": "Javascript Get the value of a param from a URL",
+    "snippet": "const getParam = (url: string, param: string): string | null => new URLSearchParams(new URL(url).search).get(param);"
+  },
+  {
+    "snippetName": "Javascript Get type of a variable in string",
+    "snippet": "const getTypeOf = (obj) => Object.prototype.toString.call(obj).match(/\\[object (.*)\\]/)[1];"
+  },
+  {
+    "snippetName": "Javascript Get type of a variable in string",
+    "snippet": "const getTypeOf = (obj: any): string => (Object.prototype.toString.call(obj).match(/\\[object (.*)\\]/) as string[])[1];"
+  },
+  {
+    "snippetName": "Javascript Redirect the page to HTTPS if it is in HTTP",
+    "snippet": "const redirectHttps = () => (location.protocol === 'https:' ? {} : location.replace(`https://${location.href.split('//')[1]}`));\n// Orconst redirectHttps = () => (location.protocol === 'https:' ? {} : (location.protocol = 'https:'));"
+  },
+  {
+    "snippetName": "Javascript Redirect the page to HTTPS if it is in HTTP",
+    "snippet": "const redirectHttps = (): void => (location.protocol === 'https:' ? void 0 : location.replace(`https://${location.href.split('//')[1]}`));\n// Orconst redirectHttps = (): string => (location.protocol === 'https:' ? '' : (location.protocol = 'https:'));"
+  },
+  {
+    "snippetName": "Javascript Run Promises in sequence",
+    "snippet": "// `promises` is an array of `Promise`const run = (promises) => promises.reduce((p, c) => p.then((rp) => c.then((rc) => [...rp, rc])), Promise.resolve([]));"
+  },
+  {
+    "snippetName": "Javascript Run Promises in sequence",
+    "snippet": "const run = (promises: Promise<any>[]): Promise<any> => promises.reduce((p, c) => p.then((rp) => c.then((rc) => [...rp, rc])), Promise.resolve([]));"
+  },
+  {
+    "snippetName": "Javascript Swap two variables",
+    "snippet": "[a, b] = [b, a];\n// Ora = [b, (b = a)][0];\n// Ora = ((x) => x)(b, (b = a));\n// Or// (only works with numbers)a = b + ((b = a), 0);\na = b * ((b = a), 1);"
+  },
+  { "snippetName": "Javascript Swap two variables", "snippet": "" },
+  {
+    "snippetName": "Javascript Wait for an amount of time",
+    "snippet": "const wait = async (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));"
+  },
+  {
+    "snippetName": "Javascript Wait for an amount of time",
+    "snippet": "const wait = async (milliseconds: number) => new Promise((resolve) => setTimeout(resolve, milliseconds));"
+  },
+  {
+    "snippetName": "Javascript Add an ordinal suffix to a number",
+    "snippet": "// `n` is a position numberconst addOrdinal = (n) => `${n}${['st', 'nd', 'rd'][((((n + 90) % 100) - 10) % 10) - 1] || 'th'}`;\n// Orconst addOrdinal = (n) => `${n}${[, 'st', 'nd', 'rd'][/1?.$/.exec(n)] || 'th'}`;\n// Orconst addOrdinal = (n) => `${n}${[, 'st', 'nd', 'rd'][(n % 100 >> 3) ^ 1 && n % 10] || 'th'}`;\n// Orconst addOrdinal = (n) => `${n}${{ one: 'st', two: 'nd', few: 'rd', other: 'th' }[new Intl.PluralRules('en', { type: 'ordinal' }).select(n)]}`;"
+  },
+  {
+    "snippetName": "Javascript Add an ordinal suffix to a number",
+    "snippet": "const addOrdinal = (n: number): string => `${n}${['st', 'nd', 'rd'][((((n + 90) % 100) - 10) % 10) - 1] || 'th'}`;\n// Orconst addOrdinal = (n: number): string => `${n}${[, 'st', 'nd', 'rd'][/1?.$/.exec(n)] || 'th'}`;\n// Orconst addOrdinal = (n: number): string => `${n}${[, 'st', 'nd', 'rd'][(n % 100 >> 3) ^ 1 && n % 10] || 'th'}`;\n// Orconst addOrdinal = (n: number): string => `${n}${{ one: 'st', two: 'nd', few: 'rd', other: 'th' }[new Intl.PluralRules('en', { type: 'ordinal' }).select(n)]}`;"
+  },
+  {
+    "snippetName": "Javascript Calculate Fibonacci numbers",
+    "snippet": "const fibo = (n, memo = {}) => memo[n] || (n <= 2 ? 1 : (memo[n] = fibo(n - 1, memo) + fibo(n - 2, memo)));"
+  },
+  {
+    "snippetName": "Javascript Calculate Fibonacci numbers",
+    "snippet": "const fibo = (n: number, memo: Record<string, number> = {}): number => memo[n] || (n <= 2 ? 1 : (memo[n] = fibo(n - 1, memo) + fibo(n - 2, memo)));"
+  },
+  {
+    "snippetName": "Javascript Calculate the average of arguments",
+    "snippet": "const average = (...args) => args.reduce((a, b) => a + b) / args.length;"
+  },
+  {
+    "snippetName": "Javascript Calculate the average of arguments",
+    "snippet": "const average = (...args: number[]): number => args.reduce((a, b) => a + b) / args.length;"
+  },
+  {
+    "snippetName": "Javascript Calculate the division of arguments",
+    "snippet": "const division = (...args) => args.reduce((a, b) => a / b);"
+  },
+  {
+    "snippetName": "Javascript Calculate the division of arguments",
+    "snippet": "const division = (...args: number): number => args.reduce((a, b) => a / b);"
+  },
+  {
+    "snippetName": "Javascript Calculate the factorial of a number",
+    "snippet": "const factorial = (n) => (n <= 1 ? 1 : n * factorial(n - 1));"
+  },
+  {
+    "snippetName": "Javascript Calculate the factorial of a number",
+    "snippet": "const factorial = (n: number): number => (n <= 1 ? 1 : n * factorial(n - 1));"
+  },
+  {
+    "snippetName": "Javascript Calculate the mod of collection index",
+    "snippet": "const mod = (a, b) => ((a % b) + b) % b;"
+  },
+  {
+    "snippetName": "Javascript Calculate the mod of collection index",
+    "snippet": "const mod = (a: number, b: number): number => ((a % b) + b) % b;"
+  },
+  {
+    "snippetName": "Javascript Calculate the remainder of division of arguments",
+    "snippet": "const remainder = (...args) => args.reduce((a, b) => a % b);"
+  },
+  {
+    "snippetName": "Javascript Calculate the remainder of division of arguments",
+    "snippet": "const remainder = (...args: number[]): number => args.reduce((a, b) => a % b);"
+  },
+  {
+    "snippetName": "Javascript Calculate the sum of arguments",
+    "snippet": "const sum = (...args) => args.reduce((a, b) => a + b);"
+  },
+  {
+    "snippetName": "Javascript Calculate the sum of arguments",
+    "snippet": "const sum = (...args: number[]): number => args.reduce((a, b) => a + b);"
+  },
+  {
+    "snippetName": "Javascript Clamp a number between two values",
+    "snippet": "const clamp = (val, min = 0, max = 1) => Math.max(min, Math.min(max, val));"
+  },
+  {
+    "snippetName": "Javascript Clamp a number between two values",
+    "snippet": "const clamp = (val: number, min: number = 0, max: number = 1): number => Math.max(min, Math.min(max, val));"
+  },
+  {
+    "snippetName": "Javascript Compute the greatest common divisor between two numbers",
+    "snippet": "const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));"
+  },
+  {
+    "snippetName": "Javascript Compute the greatest common divisor between two numbers",
+    "snippet": "const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b));"
+  },
+  {
+    "snippetName": "Javascript Convert a number to equivalent characters",
+    "snippet": "const toChars = (n) => `${n >= 26 ? toChars(Math.floor(n / 26) - 1) : ''}${'ABCDEFGHIJKLMNOPQRSTUVWXYZ'[n % 26]}`;"
+  },
+  {
+    "snippetName": "Javascript Convert a number to equivalent characters",
+    "snippet": "const toChars = (n: number): string => `${n >= 26 ? toChars(Math.floor(n / 26) - 1) : ''}${'ABCDEFGHIJKLMNOPQRSTUVWXYZ'[n % 26]}`;"
+  },
+  {
+    "snippetName": "Javascript Convert a string to number",
+    "snippet": "const toNumber = (str) => +str;"
+  },
+  {
+    "snippetName": "Javascript Convert a string to number",
+    "snippet": "const toNumber = (str: string): number => +str;"
+  },
+  {
+    "snippetName": "Javascript Convert decimal to binary recursively",
+    "snippet": "const decToBi = (num) => (num === 0 ? 0 : (num % 2) + 10 * decToBi(~~(num / 2)));"
+  },
+  {
+    "snippetName": "Javascript Convert decimal to binary recursively",
+    "snippet": "const decToBi = (num: number): number => (num === 0 ? 0 : (num % 2) + 10 * decToBi(~~(num / 2)));"
+  },
+  {
+    "snippetName": "Javascript Get the arrays of digits from a number",
+    "snippet": "const digitize = (n) => `${n}`.split('').map((v) => parseInt(v, 10));\n// Orconst digitize = (n) => [...`${n}`].map((v) => parseInt(v, 10));"
+  },
+  {
+    "snippetName": "Javascript Get the arrays of digits from a number",
+    "snippet": "const digitize = (n: number): number[] => `${n}`.split('').map((v) => parseInt(v, 10));\n// Orconst digitize = (n: number): number[] => [...`${n}`].map((v) => parseInt(v, 10));"
+  },
+  {
+    "snippetName": "Javascript Multiply arguments",
+    "snippet": "const mul = (...args) => args.reduce((a, b) => a * b);"
+  },
+  {
+    "snippetName": "Javascript Multiply arguments",
+    "snippet": "const mul = (...args: number[]): number => args.reduce((a, b) => a * b);"
+  },
+  {
+    "snippetName": "Javascript Prefix an integer with zeros",
+    "snippet": "const prefixWithZeros = (n, length) => (n / Math.pow(10, length)).toFixed(length).substr(2);\n// Orconst prefixWithZeros = (n, length) => `${Array(length).join('0')}${n}`.slice(-length);\n// Orconst prefixWithZeros = (n, length) => String(n).padStart(length, '0');"
+  },
+  {
+    "snippetName": "Javascript Prefix an integer with zeros",
+    "snippet": "const prefixWithZeros = (n: number, length: number): string => (n / Math.pow(10, length)).toFixed(length).substr(2);\n// Orconst prefixWithZeros = (n: number, length: number): string => `${Array(length).join('0')}${n}`.slice(-length);\n// Orconst prefixWithZeros = (n: number, length: number): string => String(n).padStart(length, '0');"
+  },
+  {
+    "snippetName": "Javascript Round a number to a given number of digits",
+    "snippet": "const round = (n, decimals = 0) => Number(`${Math.round(`${n}e${decimals}`)}e-${decimals}`);"
+  },
+  {
+    "snippetName": "Javascript Round a number to a given number of digits",
+    "snippet": "const round = (n: number, decimals: number = 0): number => Number(`${Math.round(`${n}e${decimals}`)}e-${decimals}`);"
+  },
+  {
+    "snippetName": "Javascript Subtract arguments",
+    "snippet": "const subtract = (...args) => args.reduce((a, b) => a - b);"
+  },
+  {
+    "snippetName": "Javascript Subtract arguments",
+    "snippet": "const subtract = (...args: number[]): number => args.reduce((a, b) => a - b);"
+  },
+  {
+    "snippetName": "Javascript Truncate a number at decimal",
+    "snippet": "const truncate = (n) => ~~n;"
+  },
+  {
+    "snippetName": "Javascript Truncate a number at decimal",
+    "snippet": "const truncate = (n: number): number => ~~n;"
+  },
+  {
+    "snippetName": "Javascript Truncate a number to a given number of decimal places without rounding",
+    "snippet": "const toFixed = (n, fixed) => `${n}`.match(new RegExp(`^-?\\\\d+(?:\\.\\\\d{0,${fixed}})?`))[0];\n// Orconst toFixed = (n, fixed) => ~~(Math.pow(10, fixed) * n) / Math.pow(10, fixed);"
+  },
+  {
+    "snippetName": "Javascript Truncate a number to a given number of decimal places without rounding",
+    "snippet": "const toFixed = (n: number, fixed: number): number => +(`${n}`.match(new RegExp(`^-?\\\\d+(?:\\.\\\\d{0,${fixed}})?`)) as string[])[0];\n// Orconst toFixed = (n: number, fixed: number): number => ~~(Math.pow(10, fixed) * n) / Math.pow(10, fixed);"
+  },
+  {
+    "snippetName": "Javascript Wrap a number between two values",
+    "snippet": "const wrap = (num, min, max) => ((((num - min) % (max - min)) + (max - min)) % (max - min)) + min;"
+  },
+  {
+    "snippetName": "Javascript Wrap a number between two values",
+    "snippet": "const wrap = (num: number, min: number, max: number): number => ((((num - min) % (max - min)) + (max - min)) % (max - min)) + min;"
+  },
+  {
+    "snippetName": "Javascript Check if multiple objects are equal",
+    "snippet": "const isEqual = (...objects) => objects.every((obj) => JSON.stringify(obj) === JSON.stringify(objects[0]));"
+  },
+  {
+    "snippetName": "Javascript Check if multiple objects are equal",
+    "snippet": "const isEqual = (...objects: object[]): boolean => objects.every((obj) => JSON.stringify(obj) === JSON.stringify(objects[0]));"
+  },
+  {
+    "snippetName": "Javascript Create an empty map that does not have properties",
+    "snippet": "// `map` doesn't have any propertiesconst map = Object.create(null);\n// The following `map` has `__proto__` property// const map = {};"
+  },
+  {
+    "snippetName": "Javascript Create an empty map that does not have properties",
+    "snippet": ""
+  },
+  {
+    "snippetName": "Javascript Create an object from the pairs of key and value",
+    "snippet": "const toObj = (arr) => Object.fromEntries(arr);\n// Orconst toObj = (arr) => arr.reduce((a, c) => ((a[c[0]] = c[1]), a), {});"
+  },
+  {
+    "snippetName": "Javascript Create an object from the pairs of key and value",
+    "snippet": "toObj([    ['a', 1],    ['b', 2],    ['c', 3],]); // { a: 1, b: 2, c: 3 }"
+  },
+  {
+    "snippetName": "Javascript Extract values of a property from an array of objects",
+    "snippet": "const pluck = (objs, property) => objs.map((obj) => obj[property]);"
+  },
+  {
+    "snippetName": "Javascript Extract values of a property from an array of objects",
+    "snippet": "pluck(    [        { name: 'John', age: 20 },        { name: 'Smith', age: 25 },        { name: 'Peter', age: 30 },    ],    'name'); // ['John', 'Smith', 'Peter']"
+  },
+  {
+    "snippetName": "Javascript Get the value at given path of an object",
+    "snippet": "const getValue = (path, obj) => path.split('.').reduce((acc, c) => acc && acc[c], obj);"
+  },
+  {
+    "snippetName": "Javascript Get the value at given path of an object",
+    "snippet": "getValue('a.b', { a: { b: 'Hello World' } }); // 'Hello World';"
+  },
+  {
+    "snippetName": "Javascript Immutably rename object keys",
+    "snippet": "const renameKeys = (keysMap, obj) => Object.keys(obj).reduce((acc, key) => ({ ...acc, ...{ [keysMap[key] || key]: obj[key] } }), {});"
+  },
+  {
+    "snippetName": "Javascript Immutably rename object keys",
+    "snippet": "const obj = { a: 1, b: 2, c: 3 };const keysMap = { a: 'd', b: 'e', c: 'f' };renameKeys(keysMap, obj); // { d: 1, e: 2, f: 3 }"
+  },
+  {
+    "snippetName": "Javascript Invert keys and values of an object",
+    "snippet": "const invert = (obj) => Object.keys(obj).reduce((res, k) => Object.assign(res, { [obj[k]]: k }), {});\n// Orconst invert = (obj) => Object.fromEntries(Object.entries(obj).map(([k, v]) => [v, k]));"
+  },
+  {
+    "snippetName": "Javascript Invert keys and values of an object",
+    "snippet": "invert({ a: '1', b: '2', c: '3' }); // { 1: 'a', 2: 'b', 3: 'c' }"
+  },
+  {
+    "snippetName": "Javascript Omit a subset of properties from an object",
+    "snippet": "const omit = (obj, keys) =>    Object.keys(obj)        .filter((k) => !keys.includes(k))        .reduce((res, k) => Object.assign(res, { [k]: obj[k] }), {});"
+  },
+  {
+    "snippetName": "Javascript Omit a subset of properties from an object",
+    "snippet": "omit({ a: '1', b: '2', c: '3' }, ['a', 'b']); // { c: '3' }"
+  },
+  {
+    "snippetName": "Javascript Pick a subset of properties of an object",
+    "snippet": "const pick = (obj, keys) =>    Object.keys(obj)        .filter((k) => keys.includes(k))        .reduce((res, k) => Object.assign(res, { [k]: obj[k] }), {});"
+  },
+  {
+    "snippetName": "Javascript Pick a subset of properties of an object",
+    "snippet": "pick({ a: '1', b: '2', c: '3' }, ['a', 'b']); // { a: '1', b: '2' }"
+  },
+  {
+    "snippetName": "Javascript Remove all null and undefined properties from an object",
+    "snippet": "const removeNullUndefined = (obj) => Object.entries(obj).reduce((a, [k, v]) => (v == null ? a : ((a[k] = v), a)), {});\n// Orconst removeNullUndefined = (obj) =>    Object.entries(obj)        .filter(([_, v]) => v != null)        .reduce((acc, [k, v]) => ({ ...acc, [k]: v }), {});\n// Orconst removeNullUndefined = (obj) => Object.fromEntries(Object.entries(obj).filter(([_, v]) => v != null));"
+  },
+  {
+    "snippetName": "Javascript Remove all null and undefined properties from an object",
+    "snippet": "removeNullUndefined({    foo: null,    bar: undefined,    fuzz: 42,}); // { fuzz: 42 }"
+  },
+  {
+    "snippetName": "Javascript Shallow copy an object",
+    "snippet": "const shallowCopy = obj => Object.assign({}, obj);\n// orconst shallowCopy = obj => {...obj};"
+  },
+  { "snippetName": "Javascript Shallow copy an object", "snippet": "" },
+  {
+    "snippetName": "Javascript Sort an object by its properties",
+    "snippet": "const sort = (obj) =>    Object.keys(obj)        .sort()        .reduce((p, c) => ((p[c] = obj[c]), p), {});"
+  },
+  {
+    "snippetName": "Javascript Sort an object by its properties",
+    "snippet": "const colors = {    white: '#ffffff',    black: '#000000',    red: '#ff0000',    green: '#008000',    blue: '#0000ff',};sort(colors);/*{    black: '#000000',    blue: '#0000ff',    green: '#008000',    red: '#ff0000',    white: '#ffffff',}*/"
+  },
+  {
+    "snippetName": "Javascript Generate a random boolean",
+    "snippet": "const randomBoolean = () => Math.random() >= 0.5;"
+  },
+  {
+    "snippetName": "Javascript Generate a random boolean",
+    "snippet": "const randomBoolean = (): boolean => Math.random() >= 0.5;"
+  },
+  {
+    "snippetName": "Javascript Generate a random floating point number in given range",
+    "snippet": "const randomFloat = (min, max) => Math.random() * (max - min) + min;"
+  },
+  {
+    "snippetName": "Javascript Generate a random floating point number in given range",
+    "snippet": "const randomFloat = (min: number, max: number): number => Math.random() * (max - min) + min;"
+  },
+  {
+    "snippetName": "Javascript Generate a random hex color",
+    "snippet": "const randomColor = () => `#${Math.random().toString(16).slice(2, 8).padEnd(6, '0')}`;\n// Orconst randomColor = () => `#${(~~(Math.random() * (1 << 24))).toString(16)}`;"
+  },
+  {
+    "snippetName": "Javascript Generate a random hex color",
+    "snippet": "const randomColor = (): string => `#${Math.random().toString(16).slice(2, 8).padEnd(6, '0')}`;\n// Orconst randomColor = (): string => `#${(~~(Math.random() * (1 << 24))).toString(16)}`;"
+  },
+  {
+    "snippetName": "Javascript Generate a random integer in given range",
+    "snippet": "const randomInteger = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;"
+  },
+  {
+    "snippetName": "Javascript Generate a random integer in given range",
+    "snippet": "const randomInteger = (min: number, max: number): number => Math.floor(Math.random() * (max - min + 1)) + min;"
+  },
+  {
+    "snippetName": "Javascript Generate a random IP address",
+    "snippet": "const randomIp = () =>    Array(4)        .fill(0)        .map((_, i) => Math.floor(Math.random() * 255) + (i === 0 ? 1 : 0))        .join('.');"
+  },
+  {
+    "snippetName": "Javascript Generate a random IP address",
+    "snippet": "const randomIp = (): number =>    Array(4)        .fill(0)        .map((_, i) => Math.floor(Math.random() * 255) + (i === 0 ? 1 : 0))        .join('.');"
+  },
+  {
+    "snippetName": "Javascript Generate a random sign",
+    "snippet": "const randomSign = () => (Math.random() >= 0.5 ? 1 : -1);"
+  },
+  {
+    "snippetName": "Javascript Generate a random sign",
+    "snippet": "const randomSign = (): number => (Math.random() >= 0.5 ? 1 : -1);"
+  },
+  {
+    "snippetName": "Javascript Generate a random string from given characters",
+    "snippet": "const generateString = (length, chars) =>    Array(length)        .fill('')        .map((v) => chars[Math.floor(Math.random() * chars.length)])        .join('');"
+  },
+  {
+    "snippetName": "Javascript Generate a random string from given characters",
+    "snippet": "const generateString = (length: number, chars: string) =>    Array(length)        .fill('')        .map((v) => chars[Math.floor(Math.random() * chars.length)])        .join('');"
+  },
+  {
+    "snippetName": "Javascript Generate a random string using Node crypto module",
+    "snippet": "const randomStr = () => require('crypto').randomBytes(32).toString('hex');"
+  },
+  {
+    "snippetName": "Javascript Generate a random string using Node crypto module",
+    "snippet": "const randomStr = (): string => require('crypto').randomBytes(32).toString('hex');"
+  },
+  {
+    "snippetName": "Javascript Generate a random string with given length",
+    "snippet": "const generateString = (length) =>    Array(length)        .fill('')        .map((v) => Math.random().toString(36).charAt(2))        .join('');"
+  },
+  {
+    "snippetName": "Javascript Generate a random string with given length",
+    "snippet": "const generateString = (length: number): string =>    Array(length)        .fill('')        .map((v) => Math.random().toString(36).charAt(2))        .join('');"
+  },
+  {
+    "snippetName": "Javascript Generate a random UUID",
+    "snippet": "const uuid = (a) => (a ? (a ^ ((Math.random() * 16) >> (a / 4))).toString(16) : ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, uuid));"
+  },
+  { "snippetName": "Javascript Generate a random UUID", "snippet": "" },
+  {
+    "snippetName": "Javascript Generate an array of random integers in a given range",
+    "snippet": "const randomArrayInRange = (min, max, n) => Array.from({ length: n }, () => Math.floor(Math.random() * (max - min + 1)) + min);"
+  },
+  {
+    "snippetName": "Javascript Generate an array of random integers in a given range",
+    "snippet": "const randomArrayInRange = (min: number, max: number, n: number): number[] => Array.from({ length: n }, () => Math.floor(Math.random() * (max - min + 1)) + min);"
+  },
+  {
+    "snippetName": "Javascript Get a random item and remove it from an array",
+    "snippet": "const randomItem = (arr) => arr.splice((Math.random() * arr.length) | 0, 1);"
+  },
+  {
+    "snippetName": "Javascript Get a random item and remove it from an array",
+    "snippet": "const randomItem = <T,>(arr: T[]): T => arr.splice((Math.random() * arr.length) | 0, 1) as unknown as T;"
+  },
+  {
+    "snippetName": "Javascript Get a random item from an array",
+    "snippet": "const randomItem = (arr) => arr[(Math.random() * arr.length) | 0];"
+  },
+  {
+    "snippetName": "Javascript Get a random item from an array",
+    "snippet": "const randomItem = <T,_>(arr: T[]): T => arr[(Math.random() * arr.length) | 0];"
+  },
+  {
+    "snippetName": "Javascript Get random items of an array",
+    "snippet": "const randomItems = (arr, count) => arr.concat().reduce((p, _, __, arr) => (p[0] < count ? [p[0] + 1, p[1].concat(arr.splice((Math.random() * arr.length) | 0, 1))] : p), [0, []])[1];"
+  },
+  {
+    "snippetName": "Javascript Get random items of an array",
+    "snippet": "randomItems([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3); // [4, 8, 5]randomItems(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'], 4); // ['e', 'c', 'h', 'j']"
+  },
+  {
+    "snippetName": "Javascript Pick a random property of an object",
+    "snippet": "const randomProp = (obj) => Object.keys(obj)[(Math.random() * Object.keys(obj).length) | 0];"
+  },
+  {
+    "snippetName": "Javascript Pick a random property of an object",
+    "snippet": "const randomProp = (obj: object): any => Object.keys(obj)[(Math.random() * Object.keys(obj).length) | 0];"
+  },
+  {
+    "snippetName": "Javascript Pick random lines from a text document",
+    "snippet": "const randomLines = (str, count) => str.split(/\\r?\\n/).reduce((p, _, __, arr) => (p[0] < count ? [p[0] + 1, p[1].concat(arr.splice((Math.random() * arr.length) | 0, 1))] : p), [0, []])[1];"
+  },
+  {
+    "snippetName": "Javascript Pick random lines from a text document",
+    "snippet": "randomLines(    `onetwothreefourfive`,    2);\n// ['one', 'four']"
+  },
+  {
+    "snippetName": "Javascript Capitalize a string",
+    "snippet": "const capitalize = (str) => `${str.charAt(0).toUpperCase()}${str.slice(1)}`;\n// Orconst capitalize = ([first, ...rest]) => `${first.toUpperCase()}${rest.join('')}`;\n// Orconst capitalize = (str) => str.replace(/^([a-z])/, (first) => first.toUpperCase());"
+  },
+  {
+    "snippetName": "Javascript Capitalize a string",
+    "snippet": "const capitalize = (str: string): string => `${str.charAt(0).toUpperCase()}${str.slice(1)}`;\n// Orconst capitalize = ([first, ...rest]: string): string => `${first.toUpperCase()}${rest.join('')}`;\n// Orconst capitalize = (str: string): string => str.replace(/^([a-z])/, (first) => first.toUpperCase());"
+  },
+  {
+    "snippetName": "Javascript Check if a path is relative",
+    "snippet": "const isRelative = (path) => !/^([a-z]+:)?[\\\\/]/i.test(path);"
+  },
+  {
+    "snippetName": "Javascript Check if a path is relative",
+    "snippet": "const isRelative = (path: string): boolean => !/^([a-z]+:)?[\\\\/]/i.test(path);"
+  },
+  {
+    "snippetName": "Javascript Check if a string consists of a repeated character sequence",
+    "snippet": "const consistsRepeatedSubstring = (str) => `${str}${str}`.indexOf(str, 1) !== str.length;"
+  },
+  {
+    "snippetName": "Javascript Check if a string consists of a repeated character sequence",
+    "snippet": "const consistsRepeatedSubstring = (str: string): boolean => `${str}${str}`.indexOf(str, 1) !== str.length;"
+  },
+  {
+    "snippetName": "Javascript Check if a string is a palindrome",
+    "snippet": "const isPalindrome = (str) => str === str.split('').reverse().join('');"
+  },
+  {
+    "snippetName": "Javascript Check if a string is a palindrome",
+    "snippet": "const isPalindrome = (str: string): boolean => str === str.split('').reverse().join('');"
+  },
+  {
+    "snippetName": "Javascript Check if a URL is absolute",
+    "snippet": "const isAbsoluteUrl = (url) => /^[a-z][a-z0-9+.-]*:/.test(url);"
+  },
+  {
+    "snippetName": "Javascript Check if a URL is absolute",
+    "snippet": "const isAbsoluteUrl = (url: string): boolean => /^[a-z][a-z0-9+.-]*:/.test(url);"
+  },
+  {
+    "snippetName": "Javascript Check if two strings are anagram",
+    "snippet": "const areAnagram = (str1, str2) => str1.toLowerCase().split('').sort().join('') === str2.toLowerCase().split('').sort().join('');"
+  },
+  {
+    "snippetName": "Javascript Check if two strings are anagram",
+    "snippet": "const areAnagram = (str1: string, str2: string): boolean => str1.toLowerCase().split('').sort().join('') === str2.toLowerCase().split('').sort().join('');"
+  },
+  {
+    "snippetName": "Javascript Convert a base64 encoded string to an uint8 array",
+    "snippet": "const base64ToUint8 = (str) => Uint8Array.from(atob(str), (c) => c.charCodeAt(0));"
+  },
+  {
+    "snippetName": "Javascript Convert a base64 encoded string to an uint8 array",
+    "snippet": "const base64ToUint8 = (str: string): Uint8Array => Uint8Array.from(atob(str), (c) => c.charCodeAt(0));"
+  },
+  {
+    "snippetName": "Javascript Convert a letter to associate emoji",
+    "snippet": "const letterToEmoji = (c) => String.fromCodePoint(c.toLowerCase().charCodeAt(0) + 127365);"
+  },
+  {
+    "snippetName": "Javascript Convert a letter to associate emoji",
+    "snippet": "const letterToEmoji = (c: string): string => String.fromCodePoint(c.toLowerCase().charCodeAt(0) + 127365);"
+  },
+  {
+    "snippetName": "Javascript Convert a string to camelCase",
+    "snippet": "const toCamelCase = (str) => str.trim().replace(/[-_\\s]+(.)?/g, (_, c) => (c ? c.toUpperCase() : ''));"
+  },
+  {
+    "snippetName": "Javascript Convert a string to camelCase",
+    "snippet": "const toCamelCase = (str: string): string => str.trim().replace(/[-_\\s]+(.)?/g, (_, c) => (c ? c.toUpperCase() : ''));"
+  },
+  {
+    "snippetName": "Javascript Convert a string to PascalCase",
+    "snippet": "const toPascalCase = (str) => (str.match(/[a-zA-Z0-9]+/g) || []).map((w) => `${w.charAt(0).toUpperCase()}${w.slice(1)}`).join('');"
+  },
+  {
+    "snippetName": "Javascript Convert a string to PascalCase",
+    "snippet": "const toPascalCase = (str: string): string => (str.match(/[a-zA-Z0-9]+/g) || []).map((w) => `${w.charAt(0).toUpperCase()}${w.slice(1)}`).join('');"
+  },
+  {
+    "snippetName": "Javascript Convert a string to URL slug",
+    "snippet": "const slugify = (str) =>    str        .toLowerCase()        .replace(/\\s+/g, '-')        .replace(/[^\\w-]+/g, '');"
+  },
+  {
+    "snippetName": "Javascript Convert a string to URL slug",
+    "snippet": "const slugify = (str: string): string =>    str        .toLowerCase()        .replace(/\\s+/g, '-')        .replace(/[^\\w-]+/g, '');"
+  },
+  {
+    "snippetName": "Javascript Convert a Windows file path to Unix path",
+    "snippet": "const toUnixPath = (path) => path.replace(/[\\\\/]+/g, '/').replace(/^([a-zA-Z]+:|\\.\\/)/, '');"
+  },
+  {
+    "snippetName": "Javascript Convert a Windows file path to Unix path",
+    "snippet": "const toUnixPath = (path: string): string => path.replace(/[\\\\/]+/g, '/').replace(/^([a-zA-Z]+:|\\.\\/)/, '');"
+  },
+  {
+    "snippetName": "Javascript Convert an uint8 array to a base64 encoded string",
+    "snippet": "const uint8ToBase64 = (arr) =>    btoa(        Array(arr.length)            .fill('')            .map((_, i) => String.fromCharCode(arr[i]))            .join('')    );\n// For Node.jsconst uint8ToBase64 = (arr) => Buffer.from(arr).toString('base64');"
+  },
+  {
+    "snippetName": "Javascript Convert an uint8 array to a base64 encoded string",
+    "snippet": "const uint8ToBase64 = (arr: Uint8Array): string =>    btoa(        Array(arr.length)            .fill('')            .map((_, i) => String.fromCharCode(arr[i]))            .join('')    );\n// For Node.jsconst uint8ToBase64 = (arr: Uint8Array): string => Buffer.from(arr).toString('base64');"
+  },
+  {
+    "snippetName": "Javascript Convert camelCase to kebab-case and vice versa",
+    "snippet": "const kebabToCamel = (str) => str.replace(/-./g, (m) => m.toUpperCase()[1]);\nconst camelToKebab = (str) => str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();"
+  },
+  {
+    "snippetName": "Javascript Convert camelCase to kebab-case and vice versa",
+    "snippet": "const kebabToCamel = (str: string): string => str.replace(/-./g, (m) => m.toUpperCase()[1]);\nconst camelToKebab = (str: string): string => str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();"
+  },
+  {
+    "snippetName": "Javascript Convert snake_case to camelCase",
+    "snippet": "const snakeToCamel = (str) => str.toLowerCase().replace(/(_\\w)/g, (m) => m.toUpperCase().substr(1));"
+  },
+  {
+    "snippetName": "Javascript Convert snake_case to camelCase",
+    "snippet": "const snakeToCamel = (str: string): string => str.toLowerCase().replace(/(_\\w)/g, (m) => m.toUpperCase().substr(1));"
+  },
+  {
+    "snippetName": "Javascript Convert the name of an Excel column to number",
+    "snippet": "const getIndex = (col) => col.split('').reduce((prev, next) => prev * 26 + parseInt(next, 36) - 9, 0);"
+  },
+  {
+    "snippetName": "Javascript Convert the name of an Excel column to number",
+    "snippet": "const getIndex = (col: string): number => col.split('').reduce((prev, next) => prev * 26 + parseInt(next, 36) - 9, 0);"
+  },
+  {
+    "snippetName": "Javascript Count the number of words in a string",
+    "snippet": "const countWords = (str) => str.trim().split(/\\s+/).length;"
+  },
+  {
+    "snippetName": "Javascript Count the number of words in a string",
+    "snippet": "const countWords = (str: string): number => str.trim().split(/\\s+/).length;"
+  },
+  {
+    "snippetName": "Javascript Count the occurrences of a character in a string",
+    "snippet": "const countOccurrences = (str, char) => [...str].reduce((a, v) => (v === char ? a + 1 : a), 0);\n// Orconst countOccurrences = (str, char) => str.split('').reduce((a, v) => (v === char ? a + 1 : a), 0);\n// Orconst countOccurrences = (str, char) => [...str].filter((item) => item === char).length;\n// Orconst countOccurrences = (str, char) => str.split('').filter((item) => item === char).length;"
+  },
+  {
+    "snippetName": "Javascript Count the occurrences of a character in a string",
+    "snippet": "const countOccurrences = (str: string, char: string): number => [...str].reduce((a, v) => (v === char ? a + 1 : a), 0);\n// Orconst countOccurrences = (str: string, char: string): number => str.split('').reduce((a, v) => (v === char ? a + 1 : a), 0);\n// Orconst countOccurrences = (str: string, char: string): number => [...str].filter((item) => item === char).length;\n// Orconst countOccurrences = (str: string, char: string): number => str.split('').filter((item) => item === char).length;"
+  },
+  {
+    "snippetName": "Javascript Decapitalize a string",
+    "snippet": "const decapitalize = (str) => `${str.charAt(0).toLowerCase()}${str.slice(1)}`;\n// Orconst decapitalize = ([first, ...rest]) => `${first.toLowerCase()}${rest.join('')}`;"
+  },
+  {
+    "snippetName": "Javascript Decapitalize a string",
+    "snippet": "const decapitalize = (str: string): string => `${str.charAt(0).toLowerCase()}${str.slice(1)}`;\n// Orconst decapitalize = ([first, ...rest]: string): string => `${first.toLowerCase()}${rest.join('')}`;"
+  },
+  {
+    "snippetName": "Javascript Escape HTML special characters",
+    "snippet": "const escape = (str) => str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/'/g, '&#39;').replace(/\"/g, '&quot;');\n// Orconst escape = (str) => str.replace(/[&<>\"']/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;', \"'\": '&#39;' }[m]));"
+  },
+  {
+    "snippetName": "Javascript Escape HTML special characters",
+    "snippet": "const escape = (str: string): string => str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/'/g, '&#39;').replace(/\"/g, '&quot;');\n// Orconst escape = (str: string): string => str.replace(/[&<>\"']/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;', \"'\": '&#39;' }[m]));"
+  },
+  {
+    "snippetName": "Javascript Format a string",
+    "snippet": "const format = (str, ...vals) => vals.reduce((s, v, i) => s.replace(new RegExp('\\\\{' + i + '\\\\}', 'g'), v), str);"
+  },
+  {
+    "snippetName": "Javascript Format a string",
+    "snippet": "const format = (str: string, ...vals: unknown[]): string => vals.reduce((s, v, i) => s.replace(new RegExp('\\\\{' + i + '\\\\}', 'g'), v), str);"
+  },
+  {
+    "snippetName": "Javascript Generate a hash of a string",
+    "snippet": "const hash = (str) => str.split('').reduce((prev, curr) => (Math.imul(31, prev) + curr.charCodeAt(0)) | 0, 0);\n// Orconst hash = (str) => str.split('').reduce((prev, curr) => ((prev << 5) - prev + curr.charCodeAt(0)) | 0, 0);"
+  },
+  {
+    "snippetName": "Javascript Generate a hash of a string",
+    "snippet": "const hash = (str: string): number => str.split('').reduce((prev, curr) => (Math.imul(31, prev) + curr.charCodeAt(0)) | 0, 0);\n// Orconst hash = (str: string): number => str.split('').reduce((prev, curr) => ((prev << 5) - prev + curr.charCodeAt(0)) | 0, 0);"
+  },
+  {
+    "snippetName": "Javascript Get the base URL without any parameters",
+    "snippet": "const baseUrl = (url) => (url.indexOf('?') === -1 ? url : url.slice(0, url.indexOf('?')));\n// Or// Note that `includes` isn't supported in IE 11const baseUrl = (url) => (url.includes('?') ? url.slice(0, url.indexOf('?')) : url);\n// Orconst baseUrl = (url) => url.split('?')[0];"
+  },
+  {
+    "snippetName": "Javascript Get the base URL without any parameters",
+    "snippet": "const baseUrl = (url: string): string => (url.indexOf('?') === -1 ? url : url.slice(0, url.indexOf('?')));\n// Or// Note that `includes` isn't supported in IE 11const baseUrl = (url: string): string => (url.includes('?') ? url.slice(0, url.indexOf('?')) : url);\n// Orconst baseUrl = (url: string): string => url.split('?')[0];"
+  },
+  {
+    "snippetName": "Javascript Get the file extension from a file name",
+    "snippet": "const ext = (fileName) => fileName.split('.').pop();"
+  },
+  {
+    "snippetName": "Javascript Get the file extension from a file name",
+    "snippet": "const ext = (fileName: string): string => fileName.split('.').pop();"
+  },
+  {
+    "snippetName": "Javascript Get the file name from a URL",
+    "snippet": "const fileName = (url: string): string => url.substring(url.lastIndexOf('/') + 1);"
+  },
+  {
+    "snippetName": "Javascript Get the file name from a URL",
+    "snippet": "const fileName = (url: string): string => url.substring(url.lastIndexOf('/') + 1);"
+  },
+  {
+    "snippetName": "Javascript Get the length of a string in bytes",
+    "snippet": "const bytes = (str) => new Blob([str]).size;"
+  },
+  {
+    "snippetName": "Javascript Get the length of a string in bytes",
+    "snippet": "const bytes = (str: string): number => new Blob([str]).size;"
+  },
+  {
+    "snippetName": "Javascript Get the number of a character in a string",
+    "snippet": "const characterCount = (str, char) => str.split(char).length - 1;\n// Orconst characterCount = (str, char) => str.replace(new RegExp(String.raw`[^${char}]`, 'g'), '').length;"
+  },
+  {
+    "snippetName": "Javascript Get the number of a character in a string",
+    "snippet": "const characterCount = (str: string, char: string): number => str.split(char).length - 1;\n// Orconst characterCount = (str: string, char: string): number => str.replace(new RegExp(String.raw`[^${char}]`, 'g'), '').length;"
+  },
+  {
+    "snippetName": "Javascript Make the first character of a string lowercase",
+    "snippet": "const lowercaseFirst = (str) => `${str.charAt(0).toLowerCase()}${str.slice(1)}`;"
+  },
+  {
+    "snippetName": "Javascript Make the first character of a string lowercase",
+    "snippet": "const lowercaseFirst = (str: string): string => `${str.charAt(0).toLowerCase()}${str.slice(1)}`;"
+  },
+  {
+    "snippetName": "Javascript Normalize file path slashes",
+    "snippet": "const normalizePath = (path) => path.replace(/[\\\\/]+/g, '/');"
+  },
+  {
+    "snippetName": "Javascript Normalize file path slashes",
+    "snippet": "const normalizePath = (path: string): string => path.replace(/[\\\\/]+/g, '/');"
+  },
+  {
+    "snippetName": "Javascript Prepend a line number to each line of a text document",
+    "snippet": "const prependNumbers = (str) =>    str        .split(/\\r?\\n/)        .map((line, i) => `${(i + 1).toString().padStart(2, ' ')} ${line}`)        .join('\\n');"
+  },
+  {
+    "snippetName": "Javascript Prepend a line number to each line of a text document",
+    "snippet": "const prependNumbers = (str: string): string =>    str        .split(/\\r?\\n/)        .map((line, i) => `${(i + 1).toString().padStart(2, ' ')} ${line}`)        .join('\\n');"
+  },
+  {
+    "snippetName": "Javascript Remove duplicate lines of a text document",
+    "snippet": "const removeDuplicateLines = (str) => Array.from(new Set(str.split(/\\r?\\n/))).join('\\n');"
+  },
+  {
+    "snippetName": "Javascript Remove duplicate lines of a text document",
+    "snippet": "const removeDuplicateLines = (str: string): string => Array.from(new Set(str.split(/\\r?\\n/))).join('\\n');"
+  },
+  {
+    "snippetName": "Javascript Remove empty lines of a text document",
+    "snippet": "const removeEmptyLines = (str) =>    str        .split(/\\r?\\n/)        .filter((line) => line.trim() !== '')        .join('\\n');"
+  },
+  {
+    "snippetName": "Javascript Remove empty lines of a text document",
+    "snippet": "const removeEmptyLines = (str: string): string =>    str        .split(/\\r?\\n/)        .filter((line) => line.trim() !== '')        .join('\\n');"
+  },
+  {
+    "snippetName": "Javascript Remove spaces from a string",
+    "snippet": "const removeSpaces = (str) => str.replace(/\\s/g, '');"
+  },
+  {
+    "snippetName": "Javascript Remove spaces from a string",
+    "snippet": "const removeSpaces = (str: string): string => str.replace(/\\s/g, '');"
+  },
+  {
+    "snippetName": "Javascript Repeat a string",
+    "snippet": "const repeat = (str, numberOfTimes) => str.repeat(numberOfTimes);\n// Orconst repeat = (str, numberOfTimes) => Array(numberOfTimes + 1).join(str);"
+  },
+  {
+    "snippetName": "Javascript Repeat a string",
+    "snippet": "const repeat = (str: string, numberOfTimes: number): string => str.repeat(numberOfTimes);\n// Orconst repeat = (str: string, numberOfTimes: number): string => Array(numberOfTimes + 1).join(str);"
+  },
+  {
+    "snippetName": "Javascript Replace all line breaks with br elements",
+    "snippet": "const nl2br = (str) => str.replace(new RegExp('\\r?\\n', 'g'), '<br>');\n// In Reactstr.split('\\n').map((item, index) => (    <React.Fragment key={index}>        {item}        <br />    </React.Fragment>));"
+  },
+  {
+    "snippetName": "Javascript Replace all line breaks with br elements",
+    "snippet": "const nl2br = (str: string): string => str.replace(new RegExp('\\r?\\n', 'g'), '<br>');"
+  },
+  {
+    "snippetName": "Javascript Replace all tab characters with spaces",
+    "snippet": "const replace = (str, numSpaces = 4) => str.replaceAll('\\t', ' '.repeat(numSpaces));"
+  },
+  {
+    "snippetName": "Javascript Replace all tab characters with spaces",
+    "snippet": "const replace = (str: string, numSpaces = 4): string => str.replaceAll('\\t', ' '.repeat(numSpaces));"
+  },
+  {
+    "snippetName": "Javascript Replace multiple spaces with a single space",
+    "snippet": "// Replace spaces, tabs and new line charactersconst replaceSpaces = (str) => str.replace(/\\s\\s+/g, ' ');\n// Only replace spacesconst replaceOnlySpaces = (str) => str.replace(/  +/g, ' ');"
+  },
+  {
+    "snippetName": "Javascript Replace multiple spaces with a single space",
+    "snippet": "const replaceSpaces = (str: string): string => str.replace(/\\s\\s+/g, ' ');\nconst replaceOnlySpaces = (str: string): string => str.replace(/  +/g, ' ');"
+  },
+  {
+    "snippetName": "Javascript Replace the first given number of characters of a string with another character",
+    "snippet": "const mask = (str, num, mask) => `${str}`.slice(num).padStart(`${str}`.length, mask);"
+  },
+  {
+    "snippetName": "Javascript Replace the first given number of characters of a string with another character",
+    "snippet": "const mask = (str: string, num: number, mask: string): string => `${str}`.slice(num).padStart(`${str}`.length, mask);"
+  },
+  {
+    "snippetName": "Javascript Reverse a string",
+    "snippet": "const reverse = (str) => str.split('').reverse().join('');\n// Orconst reverse = (str) => [...str].reverse().join('');\n// Orconst reverse = (str) => str.split('').reduce((rev, char) => `${char}${rev}`, '');\n// Orconst reverse = (str) => (str === '' ? '' : `${reverse(str.substr(1))}${str.charAt(0)}`);"
+  },
+  {
+    "snippetName": "Javascript Reverse a string",
+    "snippet": "const reverse = (str: string): string => str.split('').reverse().join('');\n// Orconst reverse = (str: string): string => [...str].reverse().join('');\n// Orconst reverse = (str: string): string => str.split('').reduce((rev, char) => `${char}${rev}`, '');\n// Orconst reverse = (str: string): string => (str === '' ? '' : `${reverse(str.substr(1))}${str.charAt(0)}`);"
+  },
+  {
+    "snippetName": "Javascript Reverse the order of lines of a text",
+    "snippet": "const reverseLines = (str) => str.split(/\\r?\\n/).reverse().join('\\n');"
+  },
+  {
+    "snippetName": "Javascript Reverse the order of lines of a text",
+    "snippet": "const reverseLines = (str: string): string => str.split(/\\r?\\n/).reverse().join('\\n');"
+  },
+  {
+    "snippetName": "Javascript Sort lines of a text document in the alphabetical order",
+    "snippet": "const sortLines = (str) => str.split(/\\r?\\n/).sort().join('\\n');\n// Reverse the orderconst reverseSortedLines = (str) => str.split(/\\r?\\n/).sort().reverse().join('\\n');"
+  },
+  {
+    "snippetName": "Javascript Sort lines of a text document in the alphabetical order",
+    "snippet": "const sortLines = (str: string): string => str.split(/\\r?\\n/).sort().join('\\n');\n// Reverse the orderconst reverseSortedLines = (str: string): string => str.split(/\\r?\\n/).sort().reverse().join('\\n');"
+  },
+  {
+    "snippetName": "Javascript Sort the characters of a string in the alphabetical order",
+    "snippet": "const sort = (str) =>    str        .split('')        .sort((a, b) => a.localeCompare(b))        .join('');"
+  },
+  {
+    "snippetName": "Javascript Sort the characters of a string in the alphabetical order",
+    "snippet": "const sort = (str: string): string =>    str        .split('')        .sort((a, b) => a.localeCompare(b))        .join('');"
+  },
+  {
+    "snippetName": "Javascript Strip ANSI codes from a string",
+    "snippet": "const stripAnsiCodes = (str) => str.replace(/[\\u001b\\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g, '');"
+  },
+  {
+    "snippetName": "Javascript Strip ANSI codes from a string",
+    "snippet": "const stripAnsiCodes = (str: string): string => str.replace(/[\\u001b\\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g, '');"
+  },
+  {
+    "snippetName": "Javascript Swap case of characters in a string",
+    "snippet": "const swapCase = (str) =>    str        .split('')        .map((c) => (c === c.toLowerCase() ? c.toUpperCase() : c.toLowerCase()))        .join('');"
+  },
+  {
+    "snippetName": "Javascript Swap case of characters in a string",
+    "snippet": "const swapCase = (str: string): string =>    str        .split('')        .map((c) => (c === c.toLowerCase() ? c.toUpperCase() : c.toLowerCase()))        .join('');"
+  },
+  {
+    "snippetName": "Javascript Trim slashes at the beginning and the end of a string",
+    "snippet": "const trimSlashes = (str) => str.replace(/^\\/+|\\/+$/g, '');\n// Orconst trimSlashes = (str) => str.split('/').filter(Boolean).join('/');"
+  },
+  {
+    "snippetName": "Javascript Trim slashes at the beginning and the end of a string",
+    "snippet": "const trimSlashes = (str: string): string => str.replace(/^\\/+|\\/+$/g, '');\n// Orconst trimSlashes = (str: string): string => str.split('/').filter(Boolean).join('/');"
+  },
+  {
+    "snippetName": "Javascript Trim some character",
+    "snippet": "const trim = (str, char) => str.split(char).filter(Boolean).join();"
+  },
+  {
+    "snippetName": "Javascript Trim some character",
+    "snippet": "const trim = (str: string, char: string): string => str.split(char).filter(Boolean).join();"
+  },
+  {
+    "snippetName": "Javascript Trim the file extension from a file name",
+    "snippet": "const trimExt = (fileName) => (fileName.indexOf('.') === -1 ? fileName : fileName.split('.').slice(0, -1).join('.'));"
+  },
+  {
+    "snippetName": "Javascript Trim the file extension from a file name",
+    "snippet": "const trimExt = (fileName: string): string => (fileName.indexOf('.') === -1 ? fileName : fileName.split('.').slice(0, -1).join('.'));"
+  },
+  {
+    "snippetName": "Javascript Truncate a string at full words",
+    "snippet": "const truncate = (str, max, suffix) => (str.length < max ? str : `${str.substr(0, str.substr(0, max - suffix.length).lastIndexOf(' '))}${suffix}`);"
+  },
+  {
+    "snippetName": "Javascript Truncate a string at full words",
+    "snippet": "const truncate = (str: string, max: number, suffix: string = '...'): string => (str.length < max ? str : `${str.substr(0, str.substr(0, max - suffix.length).lastIndexOf(' '))}${suffix}`);"
+  },
+  {
+    "snippetName": "Javascript Unescape HTML special characters",
+    "snippet": "const unescape = (str) =>    str        .replace(/&amp;/g, '&')        .replace(/&lt;/g, '<')        .replace(/&gt;/g, '>')        .replace(/&#0*39;/g, \"'\")        .replace(/&quot;/g, '\"');"
+  },
+  {
+    "snippetName": "Javascript Unescape HTML special characters",
+    "snippet": "const unescape = (str: string): string =>    str        .replace(/&amp;/g, '&')        .replace(/&lt;/g, '<')        .replace(/&gt;/g, '>')        .replace(/&#0*39;/g, \"'\")        .replace(/&quot;/g, '\"');"
+  },
+  {
+    "snippetName": "Javascript Uppercase the first character of each word in a string",
+    "snippet": "const uppercaseWords = (str) =>    str        .split(' ')        .map((w) => `${w.charAt(0).toUpperCase()}${w.slice(1)}`)        .join(' ');\n// Orconst uppercaseWords = (str) => str.replace(/^(.)|\\s+(.)/g, (c) => c.toUpperCase());"
+  },
+  {
+    "snippetName": "Javascript Uppercase the first character of each word in a string",
+    "snippet": "const uppercaseWords = (str: string): string =>    str        .split(' ')        .map((w) => `${w.charAt(0).toUpperCase()}${w.slice(1)}`)        .join(' ');\n// Orconst uppercaseWords = (str: string): string => str.replace(/^(.)|\\s+(.)/g, (c) => c.toUpperCase());"
+  },
+  {
+    "snippetName": "Javascript Check if a character is a digit",
+    "snippet": "const isDigit = (char) => char < 10;\n// Orconst isDigit = (char) => char.length === 1 && c >= '0' && c <= '9';\n// Orconst isDigit = (char) => Boolean([true, true, true, true, true, true, true, true, true, true][char]);"
+  },
+  {
+    "snippetName": "Javascript Check if a character is a digit",
+    "snippet": "const isDigit = (char: string): boolean => char < 10;\n// Orconst isDigit = (char: string): boolean => char.length === 1 && c >= '0' && c <= '9';\n// Orconst isDigit = (char: string): boolean => Boolean([true, true, true, true, true, true, true, true, true, true][char]);"
+  },
+  {
+    "snippetName": "Javascript Check if a date is a weekday",
+    "snippet": "// `date` is a Date objectconst isWeekday = (date = new Date()) => date.getDay() % 6 !== 0;"
+  },
+  {
+    "snippetName": "Javascript Check if a date is a weekday",
+    "snippet": "const isWeekday = (date = new Date()): boolean => date.getDay() % 6 !== 0;"
+  },
+  {
+    "snippetName": "Javascript Check if a date is a weekend",
+    "snippet": "// `date` is a Date objectconst isWeekend = (date = new Date()) => date.getDay() % 6 === 0;"
+  },
+  {
+    "snippetName": "Javascript Check if a date is a weekend",
+    "snippet": "const isWeekend = (date = new Date()): boolean => date.getDay() % 6 === 0;"
+  },
+  {
+    "snippetName": "Javascript Check if a date is between two dates",
+    "snippet": "// `min`, `max` and `date` are `Date` instancesconst isBetween = (date, min, max) => date.getTime() >= min.getTime() && date.getTime() <= max.getTime();"
+  },
+  {
+    "snippetName": "Javascript Check if a date is between two dates",
+    "snippet": "const isBetween = (date: Date, min: Date, max: Date): boolean => date.getTime() >= min.getTime() && date.getTime() <= max.getTime();"
+  },
+  {
+    "snippetName": "Javascript Check if a date is today",
+    "snippet": "// `date` is a Date objectconst isToday = (date) => date.toISOString().slice(0, 10) === new Date().toISOString().slice(0, 10);"
+  },
+  {
+    "snippetName": "Javascript Check if a date is today",
+    "snippet": "const isToday = (date: Date): boolean => date.toISOString().slice(0, 10) === new Date().toISOString().slice(0, 10);"
+  },
+  {
+    "snippetName": "Javascript Check if a date occurs in the current year",
+    "snippet": "// `date` is a Date objectconst isCurrentYear = (date) => date.getUTCFullYear() === new Date().getUTCFullYear();"
+  },
+  {
+    "snippetName": "Javascript Check if a date occurs in the current year",
+    "snippet": "const isCurrentYear = (date: Date): boolean => date.getUTCFullYear() === new Date().getUTCFullYear();"
+  },
+  {
+    "snippetName": "Javascript Check if a flat array has duplicate values",
+    "snippet": "const hasDuplicateValues = (arr) => new Set(arr).size !== arr.length;\n// Orconst hasDuplicateValues = (arr) => arr.some((item, index, arr) => arr.indexOf(item) !== index);"
+  },
+  {
+    "snippetName": "Javascript Check if a flat array has duplicate values",
+    "snippet": "const hasDuplicateValues = <T,_>(arr: T[]): boolean => new Set(arr).size !== arr.length;\n// Orconst hasDuplicateValues = <T,_>(arr: T[]): boolean => arr.some((item, index, arr) => arr.indexOf(item) !== index);"
+  },
+  {
+    "snippetName": "Javascript Check if a given integer is a prime number",
+    "snippet": "const isPrime = (n) =>    n > 1 &&    Array(Math.floor(Math.sqrt(n)) - 1)        .fill(0)        .map((_, i) => i + 2)        .every((i) => n % i !== 0);"
+  },
+  {
+    "snippetName": "Javascript Check if a given integer is a prime number",
+    "snippet": "const isPrime = (n: number): boolean =>    n > 1 &&    Array(Math.floor(Math.sqrt(n)) - 1)        .fill(0)        .map((_, i) => i + 2)        .every((i) => n % i !== 0);"
+  },
+  {
+    "snippetName": "Javascript Check if a number is a power of 2",
+    "snippet": "const isPowerOfTwo = (n) => (n & (n - 1)) === 0;"
+  },
+  {
+    "snippetName": "Javascript Check if a number is a power of 2",
+    "snippet": "const isPowerOfTwo = (n: number): boolean => (n & (n - 1)) === 0;"
+  },
+  {
+    "snippetName": "Javascript Check if a number is even",
+    "snippet": "const isEven = (n) => n % 2 === 0;\n// Orconst isEven = (n) => (n & 1) === 0;\n// Orconst isEven = (n) => !(n & 1);\n// Orconst isEven = (n) => Number.isInteger(n / 2);"
+  },
+  {
+    "snippetName": "Javascript Check if a number is even",
+    "snippet": "const isEven = (n: number): boolean => n % 2 === 0;\n// Orconst isEven = (n: number): boolean => (n & 1) === 0;\n// Orconst isEven = (n: number): boolean => !(n & 1);\n// Orconst isEven = (n: number): boolean => Number.isInteger(n / 2);"
+  },
+  {
+    "snippetName": "Javascript Check if a number is in a given range",
+    "snippet": "const inRange = (num, a, b, threshold = 0) => Math.min(a, b) - threshold <= num && num <= Math.max(a, b) + threshold;"
+  },
+  {
+    "snippetName": "Javascript Check if a number is in a given range",
+    "snippet": "const inRange = (num: number, a: number, b: number, threshold: number = 0): boolean => Math.min(a, b) - threshold <= num && num <= Math.max(a, b) + threshold;"
+  },
+  {
+    "snippetName": "Javascript Check if a number is negative",
+    "snippet": "const isNegative = (n) => Math.sign(n) === -1;\n// Orconst isNegative = (n) => n < 0;"
+  },
+  {
+    "snippetName": "Javascript Check if a number is negative",
+    "snippet": "const isNegative = (n: number): boolean => Math.sign(n) === -1;\n// Orconst isNegative = (n: number): boolean => n < 0;"
+  },
+  {
+    "snippetName": "Javascript Check if a number is odd",
+    "snippet": "const isOdd = (n) => n % 2 !== 0;\n// Orconst isOdd = (n) => !!(n & 1);\n// Orconst isOdd = (n) => !Number.isInteger(n / 2);"
+  },
+  {
+    "snippetName": "Javascript Check if a number is odd",
+    "snippet": "const isOdd = (n: number): boolean => n % 2 !== 0;\n// Orconst isOdd = (n: number): boolean => !!(n & 1);\n// Orconst isOdd = (n: number): boolean => !Number.isInteger(n / 2);"
+  },
+  {
+    "snippetName": "Javascript Check if a number is positive",
+    "snippet": "const isPositive = (n) => Math.sign(n) === 1;"
+  },
+  {
+    "snippetName": "Javascript Check if a number is positive",
+    "snippet": "const isPositive = (n: number): boolean => Math.sign(n) === 1;"
+  },
+  {
+    "snippetName": "Javascript Check if a string contains lower case characters",
+    "snippet": "const containsLowerCase = (str) => str !== str.toUpperCase();"
+  },
+  {
+    "snippetName": "Javascript Check if a string contains lower case characters",
+    "snippet": "const containsLowerCase = (str: string): boolean => str !== str.toUpperCase();"
+  },
+  {
+    "snippetName": "Javascript Check if a string contains only ASCII characters",
+    "snippet": "const isAscii = (str) => /^[\\x00-\\x7F]+$/.test(str);"
+  },
+  {
+    "snippetName": "Javascript Check if a string contains only ASCII characters",
+    "snippet": "const isAscii = (str: string): boolean => /^[\\x00-\\x7F]+$/.test(str);"
+  },
+  {
+    "snippetName": "Javascript Check if a string contains only digits",
+    "snippet": "const isNumeric = (str) => !/[^0-9]/.test(str);"
+  },
+  {
+    "snippetName": "Javascript Check if a string contains only digits",
+    "snippet": "const isNumeric = (str: string): boolean => !/[^0-9]/.test(str);"
+  },
+  {
+    "snippetName": "Javascript Check if a string contains only letters and numbers",
+    "snippet": "const isAlphanumeric = (str) => /^[0-9A-Z]+$/i.test(str);"
+  },
+  {
+    "snippetName": "Javascript Check if a string contains only letters and numbers",
+    "snippet": "const isAlphanumeric = (str: string): boolean => /^[0-9A-Z]+$/i.test(str);"
+  },
+  {
+    "snippetName": "Javascript Check if a string contains only letters",
+    "snippet": "const isAlpha = (str) => /^[A-Z]+$/i.test(str);"
+  },
+  {
+    "snippetName": "Javascript Check if a string contains only letters",
+    "snippet": "const isAlpha = (str: string): boolean => /^[A-Z]+$/i.test(str);"
+  },
+  {
+    "snippetName": "Javascript Check if a string contains upper case characters",
+    "snippet": "const containsUpperCase = (str) => str !== str.toLowerCase();"
+  },
+  {
+    "snippetName": "Javascript Check if a string contains upper case characters",
+    "snippet": "const containsUpperCase = (str: string): boolean => str !== str.toLowerCase();"
+  },
+  {
+    "snippetName": "Javascript Check if a string contains whitespace",
+    "snippet": "const containsWhitespace = (str) => (str) => /\\s/.test(str);"
+  },
+  {
+    "snippetName": "Javascript Check if a string contains whitespace",
+    "snippet": "const containsWhitespace =    (str: string): boolean =>    (str) =>        /\\s/.test(str);"
+  },
+  {
+    "snippetName": "Javascript Check if a string is a hexadecimal color",
+    "snippet": "const isHexColor = (color) => /^#([0-9A-F]{3}|[0-9A-F]{4}|[0-9A-F]{6}|[0-9A-F]{8})$/i.test(color);"
+  },
+  {
+    "snippetName": "Javascript Check if a string is a hexadecimal color",
+    "snippet": "const isHexColor = (color: string): boolean => /^#([0-9A-F]{3}|[0-9A-F]{4}|[0-9A-F]{6}|[0-9A-F]{8})$/i.test(color);"
+  },
+  {
+    "snippetName": "Javascript Check if a string is a hexadecimal number",
+    "snippet": "const isHexadecimal = (str) => /^[A-F0-9]+$/i.test(str);\n// Orconst isHexadecimal = (str) => str.split('').every((c) => '0123456789ABCDEFabcdef'.indexOf(c) !== -1);"
+  },
+  {
+    "snippetName": "Javascript Check if a string is a hexadecimal number",
+    "snippet": "const isHexadecimal = (str: string): boolean => /^[A-F0-9]+$/i.test(str);\n// Orconst isHexadecimal = (str: string): boolean => str.split('').every((c) => '0123456789ABCDEFabcdef'.indexOf(c) !== -1);"
+  },
+  {
+    "snippetName": "Javascript Check if a string is a MongoDB ObjectId",
+    "snippet": "const isMongoId = (str) => str.length === 24 && /^[A-F0-9]+$/i.test(str);\n// Orconst isMongoId = (str) => str.length === 24 && str.split('').every((c) => '0123456789ABCDEFabcdef'.indexOf(c) !== -1);"
+  },
+  {
+    "snippetName": "Javascript Check if a string is a MongoDB ObjectId",
+    "snippet": "const isMongoId = (str: string): boolean => str.length === 24 && /^[A-F0-9]+$/i.test(str);\n// Orconst isMongoId = (str: string): boolean => str.length === 24 && str.split('').every((c) => '0123456789ABCDEFabcdef'.indexOf(c) !== -1);"
+  },
+  {
+    "snippetName": "Javascript Check if a string is an octal number",
+    "snippet": "const isOctal = (str) => /^(0o)?[0-7]+$/i.test(str);"
+  },
+  {
+    "snippetName": "Javascript Check if a string is an octal number",
+    "snippet": "const isOctal = (str: string): boolean => /^(0o)?[0-7]+$/i.test(str);"
+  },
+  {
+    "snippetName": "Javascript Check if a string is lower case",
+    "snippet": "const isLowerCase = (str) => str === str.toLowerCase();"
+  },
+  {
+    "snippetName": "Javascript Check if a string is lower case",
+    "snippet": "const isLowerCase = (str: string): boolean => str === str.toLowerCase();"
+  },
+  {
+    "snippetName": "Javascript Check if a string is upper case",
+    "snippet": "const isUpperCase = (str) => str === str.toUpperCase();"
+  },
+  {
+    "snippetName": "Javascript Check if a string is upper case",
+    "snippet": "const isUpperCase = (str: string): boolean => str === str.toUpperCase();"
+  },
+  {
+    "snippetName": "Javascript Check if a value is a business identifier code",
+    "snippet": "const isBIC = (value) => /^[a-zA-Z]{6}[a-zA-Z0-9]{2}([a-zA-Z0-9]{3})?$/.test(value);"
+  },
+  {
+    "snippetName": "Javascript Check if a value is a business identifier code",
+    "snippet": "const isBIC = (value: string): boolean => /^[a-zA-Z]{6}[a-zA-Z0-9]{2}([a-zA-Z0-9]{3})?$/.test(value);"
+  },
+  {
+    "snippetName": "Javascript Check if a value is a number",
+    "snippet": "const isNumber = (value) => !isNaN(parseFloat(value)) && isFinite(value);"
+  },
+  {
+    "snippetName": "Javascript Check if a value is a number",
+    "snippet": "const isNumber = (value: any): number => !isNaN(parseFloat(value)) && isFinite(value);"
+  },
+  {
+    "snippetName": "Javascript Check if a value is a plain object",
+    "snippet": "const isPlainObject = (v) => !!v && typeof v === 'object' && (v.__proto__ === null || v.__proto__ === Object.prototype);"
+  },
+  {
+    "snippetName": "Javascript Check if a value is a plain object",
+    "snippet": "const isPlainObject = (v: any): boolean => !!v && typeof v === 'object' && (v.__proto__ === null || v.__proto__ === Object.prototype);"
+  },
+  {
+    "snippetName": "Javascript Check if a value is a regular expression",
+    "snippet": "const isRegExp = (value) => Object.prototype.toString.call(value) === '[object RegExp]';"
+  },
+  {
+    "snippetName": "Javascript Check if a value is a regular expression",
+    "snippet": "const isRegExp = (value: any): boolean => Object.prototype.toString.call(value) === '[object RegExp]';"
+  },
+  {
+    "snippetName": "Javascript Check if a value is a string",
+    "snippet": "const isString = (value) => Object.prototype.toString.call(value) === '[object String]';"
+  },
+  {
+    "snippetName": "Javascript Check if a value is a string",
+    "snippet": "const isString = (value: any): boolean => Object.prototype.toString.call(value) === '[object String]';"
+  },
+  {
+    "snippetName": "Javascript Check if a value is an object",
+    "snippet": "const isObject = (v) => v !== null && typeof v === 'object';"
+  },
+  {
+    "snippetName": "Javascript Check if a value is an object",
+    "snippet": "const isObject = (v: any): boolean => v !== null && typeof v === 'object';"
+  },
+  {
+    "snippetName": "Javascript Check if a value is base32 encoded",
+    "snippet": "const isBase32 = (value) => value.length % 8 === 0 && /^[A-Z2-7]+=*$/.test(value);"
+  },
+  {
+    "snippetName": "Javascript Check if a value is base32 encoded",
+    "snippet": "const isBase32 = (value: string): boolean => value.length % 8 === 0 && /^[A-Z2-7]+=*$/.test(value);"
+  },
+  {
+    "snippetName": "Javascript Check if a value is base58 encoded",
+    "snippet": "// It doesn't accept the I, O, l charactersconst isBase58 = (value) => /^[A-HJ-NP-Za-km-z1-9]*$/.test(value);"
+  },
+  {
+    "snippetName": "Javascript Check if a value is base58 encoded",
+    "snippet": "const isBase58 = (value: string): boolean => /^[A-HJ-NP-Za-km-z1-9]*$/.test(value);"
+  },
+  {
+    "snippetName": "Javascript Check if a value is base64 encoded",
+    "snippet": "const isBase64 = (value) => /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$/.test(value);"
+  },
+  {
+    "snippetName": "Javascript Check if a value is base64 encoded",
+    "snippet": "const isBase64 = (value: string): boolean => /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$/.test(value);"
+  },
+  {
+    "snippetName": "Javascript Check if a value is nil",
+    "snippet": "const isNil = (value) => value == null;"
+  },
+  {
+    "snippetName": "Javascript Check if a value is nil",
+    "snippet": "const isNil = (value: any): boolean => value == null;"
+  },
+  {
+    "snippetName": "Javascript Check if a year is leap year",
+    "snippet": "const isLeapYear = (year) => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;\n// Or// Get the number of days in Februaryconst isLeapYear = (year) => new Date(year, 1, 29).getDate() === 29;"
+  },
+  {
+    "snippetName": "Javascript Check if a year is leap year",
+    "snippet": "const isLeapYear = (year: number): boolean => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;\n// Orconst isLeapYear = (year: number): boolean => new Date(year, 1, 29).getDate() === 29;"
+  },
+  {
+    "snippetName": "Javascript Check if all array elements are equal to a given value",
+    "snippet": "const isEqual = (arr, value) => arr.every((item) => item === value);\n// Or// Ends earlier for false arraysconst isEqual = (arr, value) => !arr.some((item) => item !== value);"
+  },
+  {
+    "snippetName": "Javascript Check if all array elements are equal to a given value",
+    "snippet": "const isEqual = <T,_>(arr: T[], value: T): boolean => arr.every((item) => item === value);\n// Orconst isEqual = <T,_>(arr: T[], value: T): boolean => !arr.some((item) => item !== value);"
+  },
+  {
+    "snippetName": "Javascript Check if all items in an array are equal",
+    "snippet": "const areEqual = (arr) => arr.length > 0 && arr.every((item) => item === arr[0]);\n// Orconst areEqual = (arr) => new Set(arr).size === 1;"
+  },
+  {
+    "snippetName": "Javascript Check if all items in an array are equal",
+    "snippet": "const areEqual = <T,_>(arr: T[]): boolean => arr.length > 0 && arr.every((item) => item === arr[0]);\n// Orconst areEqual = <T,_>(arr: T[]): boolean => new Set(arr).size === 1;"
+  },
+  {
+    "snippetName": "Javascript Check if an array contains a value matching some criterias",
+    "snippet": "const contains = (arr, criteria) => arr.some((v) => criteria(v));\n// Orconst contains = (arr, criteria) => arr.some(criteria);\n// Orconst contains = (arr, criteria) => arr.filter(criteria).length > 0;"
+  },
+  {
+    "snippetName": "Javascript Check if an array contains a value matching some criterias",
+    "snippet": "const contains = <T,_>(arr: T[], criteria: (a: T) => boolean): boolean => arr.some((v) => criteria(v));\n// Orconst contains = <T,_>(arr: T[], criteria: (a: T) => boolean): boolean => arr.some(criteria);\n// Orconst contains = <T,_>(arr: T[], criteria: (a: T) => boolean): boolean => arr.filter(criteria).length > 0;"
+  },
+  {
+    "snippetName": "Javascript Check if an array is not empty",
+    "snippet": "const isNotEmpty = (arr) => Array.isArray(arr) && Object.keys(arr).length > 0;"
+  },
+  {
+    "snippetName": "Javascript Check if an array is not empty",
+    "snippet": "const isNotEmpty = (arr: any): boolean => Array.isArray(arr) && Object.keys(arr).length > 0;"
+  },
+  {
+    "snippetName": "Javascript Check if an array is subset of other array",
+    "snippet": "// Check if `b` is subset of `a`const isSubset = (a, b) => new Set(b).size === new Set(b.concat(a)).size;\n// Orconst isSubset = (a, b) => b.join('|').includes(a.join('|'));"
+  },
+  {
+    "snippetName": "Javascript Check if an array is subset of other array",
+    "snippet": "const isSubset = <T,_>(a: T[], b: T[]): boolean => new Set(b).size === new Set(b.concat(a)).size;\n// Orconst isSubset = <T,_>(a: T[], b: T[]): boolean => b.join('|').includes(a.join('|'));"
+  },
+  {
+    "snippetName": "Javascript Check if an object is a Promise",
+    "snippet": "const isPromise = (obj) => !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';"
+  },
+  {
+    "snippetName": "Javascript Check if an object is a Promise",
+    "snippet": "const isPromise = (obj: any): boolean => !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';"
+  },
+  {
+    "snippetName": "Javascript Check if an object is an array",
+    "snippet": "const isArray = (obj) => Array.isArray(obj);"
+  },
+  {
+    "snippetName": "Javascript Check if an object is an array",
+    "snippet": "const isArray = (obj: any): boolean => Array.isArray(obj);"
+  },
+  {
+    "snippetName": "Javascript Check if an object is empty",
+    "snippet": "const isEmpty = (obj) => Reflect.ownKeys(obj).length === 0 && obj.constructor === Object;\n// Or for enumerable property names onlyconst isEmpty = (obj) => JSON.stringify(obj) === '{}';"
+  },
+  {
+    "snippetName": "Javascript Check if an object is empty",
+    "snippet": "const isEmpty = (obj: object): boolean => Reflect.ownKeys(obj).length === 0 && obj.constructor === Object;\nconst isEmpty = (obj: object): boolean => JSON.stringify(obj) === '{}';"
+  },
+  {
+    "snippetName": "Javascript Validate a Gregorian date",
+    "snippet": "// `m`: the month (zero-based index)// `d`: the day// `y`: the yearconst isValidDate = (m, d, y) => 0 <= m && m <= 11 && 0 < y && y < 32768 && 0 < d && d <= new Date(y, m, 0).getDate();"
+  },
+  {
+    "snippetName": "Javascript Validate a Gregorian date",
+    "snippet": "const isValidDate = (m: number, d: number, y: number): boolean => 0 <= m && m <= 11 && 0 < y && y < 32768 && 0 < d && d <= new Date(y, m, 0).getDate();"
+  }
+]
