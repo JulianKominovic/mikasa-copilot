@@ -1,8 +1,9 @@
-#Mikasa copilot
+# Mikasa copilot
 
 Todo esto como extension de vscode, en lo posible como lo hace copilot.
 El server quedaria corriendo local en la maquina en el puerto 5000 por ejemplo
 
+## Recursos
 - JS snippets oneliners: https://1loc.dev/
 - HTML snippets: htmldom.dev
 - Copy paste JS snippers: surma.github.io
@@ -12,5 +13,8 @@ El server quedaria corriendo local en la maquina en el puerto 5000 por ejemplo
 
 
 - Snippets engine
-https://you.com/api/generic?source=w3schools&fields=frontend_code_snippet&version=4&query=javascript+reverse+array&size=15&service=generic_code&filters=%5B%5D
-https://you.com/api/generic?source=stackoverflow&version=2&query=javascript+reverse+array&size=15&service=generic_stackoverflow&filters=%5B%5D
+  - https://you.com/api/generic?source=w3schools&fields=frontend_code_snippet&version=4&query=javascript+reverse+array&size=15&service=generic_code&filters=%5B%5D
+  - https://you.com/api/generic?source=stackoverflow&version=2&query=javascript+reverse+array&size=15&service=generic_stackoverflow&filters=%5B%5D
+
+## Diagrama
+![copilot made in casa](https://user-images.githubusercontent.com/70329467/182990660-4ae53bbd-0b41-477f-8d15-bff482498f1d.png)
