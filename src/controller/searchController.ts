@@ -69,14 +69,14 @@ export default async function searchController(fastify: FastifyInstance) {
           ? w3schools?.value?.searchResults?.results?.[0]?.frontend_code_snippet
           : null;
       console.log(
-        geeksforgeeksResponse ||
-          w3SchoolsBestResponse ||
-          stackoverflowBestResponse
+        w3SchoolsBestResponse ||
+          stackoverflowBestResponse ||
+          geeksforgeeksResponse
       );
       reply.send(
-        geeksforgeeksResponse ||
-          w3SchoolsBestResponse ||
-          stackoverflowBestResponse
+        w3SchoolsBestResponse ||
+          stackoverflowBestResponse ||
+          geeksforgeeksResponse
       );
     }
   );
