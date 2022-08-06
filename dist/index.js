@@ -51188,10 +51188,15 @@ var RESPONSE_SIZE = 1;
 var searchW3schools = function (term) {
     if (term === void 0) { term = ""; }
     return axios
-        .get("https://you.com/api/generic?source=w3schools&fields=frontend_code_snippet&version=4&query=".concat(term, "&size=").concat(RESPONSE_SIZE, "&service=generic_code&filters=%5B%5D"))
+        .get("https://you.com/api/generic?source=w3schools&fields=frontend_title%2Cfrontend_code_snippet%2Cfrontend_text&version=4&query=".concat(term, "&size=").concat(RESPONSE_SIZE, "&service=generic_code&filters=%5B%5D"))
         .then(function (res) {
-        console.log(res.data);
-        return res.data;
+        var _a, _b, _c;
+        var body = (_c = (_b = (_a = res.data) === null || _a === void 0 ? void 0 : _a.searchResults) === null || _b === void 0 ? void 0 : _b.results) === null || _c === void 0 ? void 0 : _c[0];
+        return ((body === null || body === void 0 ? void 0 : body.frontend_title) +
+            "\n" +
+            (body === null || body === void 0 ? void 0 : body.frontend_text) +
+            "\n" +
+            (body === null || body === void 0 ? void 0 : body.frontend_code_snippet));
     });
 };
 var searchStackOverflow = function (term) {
@@ -51199,17 +51204,37 @@ var searchStackOverflow = function (term) {
     return axios
         .get("https://you.com/api/generic?source=stackoverflow&version=2&query=".concat(term, "&size=").concat(RESPONSE_SIZE, "&service=generic_stackoverflow&filters=%5B%5D"))
         .then(function (res) {
-        console.log(res.data);
-        return res.data;
+        var _a, _b, _c, _d, _e, _f, _g, _h;
+        return (new jsdom.JSDOM((_d = (_c = (_b = (_a = res.data) === null || _a === void 0 ? void 0 : _a.searchResults) === null || _b === void 0 ? void 0 : _b.results) === null || _c === void 0 ? void 0 : _c[0]) === null || _d === void 0 ? void 0 : _d.top_answer["body"])
+            .window.document.children[0].textContent ||
+            ((_h = (_g = (_f = (_e = res.data) === null || _e === void 0 ? void 0 : _e.searchResults) === null || _f === void 0 ? void 0 : _f.results) === null || _g === void 0 ? void 0 : _g[0]) === null || _h === void 0 ? void 0 : _h.top_answer["body"]));
     });
 };
 var searchGeeksForGeeks = function (term) {
     if (term === void 0) { term = ""; }
     return axios
-        .get("https://you.com/api/generic?source=geeksforgeeks&fields=frontend_code_snippet&version=8&query=".concat(term, "&size=").concat(RESPONSE_SIZE, "&service=generic_code&filters=%5B%5D"))
+        .get("https://you.com/api/generic?source=geeksforgeeks&fields=frontend_title%2Cfrontend_code_snippet&version=8&query=".concat(term, "&size=").concat(RESPONSE_SIZE, "&service=generic_code&filters=%5B%5D"))
         .then(function (res) {
-        console.log(res.data);
-        return res.data;
+        var _a, _b, _c;
+        var body = (_c = (_b = (_a = res.data) === null || _a === void 0 ? void 0 : _a.searchResults) === null || _b === void 0 ? void 0 : _b.results) === null || _c === void 0 ? void 0 : _c[0];
+        return ((body === null || body === void 0 ? void 0 : body.frontend_title) +
+            "\n" +
+            (new jsdom.JSDOM(body === null || body === void 0 ? void 0 : body.frontend_code_snippet).window.document.children[0]
+                .textContent || (body === null || body === void 0 ? void 0 : body.frontend_code_snippet)));
+    });
+};
+var searchMozilla = function (term) {
+    if (term === void 0) { term = ""; }
+    return axios
+        .get("https://you.com/api/generic?source=mdn&fields=frontend_title%2Cfrontend_code_snippet%2Cfrontend_text&version=2&query=".concat(term, "&size=").concat(RESPONSE_SIZE, "&service=generic_code&filters=%5B%5D"))
+        .then(function (res) {
+        var _a, _b, _c;
+        var body = (_c = (_b = (_a = res.data) === null || _a === void 0 ? void 0 : _a.searchResults) === null || _b === void 0 ? void 0 : _b.results) === null || _c === void 0 ? void 0 : _c[0];
+        return ((body === null || body === void 0 ? void 0 : body.frontend_title) +
+            "\n" +
+            (body === null || body === void 0 ? void 0 : body.frontend_text) +
+            "\n" +
+            (body === null || body === void 0 ? void 0 : body.frontend_code_snippet));
     });
 };
 
@@ -51761,11 +51786,10 @@ function searchController(fastify) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
             fastify.post("/", function (_request, reply) {
-                var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v;
                 return __awaiter(this, void 0, void 0, function () {
-                    var termToSearch, tryLocalSearch, _w, w3schools, stackoverflow, geeksforgeeks, geeksforgeeksResponse, stackoverflowBestResponse, w3SchoolsBestResponse;
-                    return __generator(this, function (_x) {
-                        switch (_x.label) {
+                    var termToSearch, tryLocalSearch, _a, w3schools, stackoverflow, geeksforgeeks, mozilla, geeksforgeeksResponse, stackoverflowBestResponse, w3SchoolsBestResponse, mozillaBestResponse;
+                    return __generator(this, function (_b) {
+                        switch (_b.label) {
                             case 0:
                                 termToSearch = _request.body;
                                 tryLocalSearch = fuzzySearch.go(termToSearch, oneLocSnippets, {
@@ -51780,27 +51804,22 @@ function searchController(fastify) {
                                         searchW3schools(termToSearch),
                                         searchStackOverflow(termToSearch),
                                         searchGeeksForGeeks(termToSearch),
+                                        searchMozilla(termToSearch),
                                     ])];
                             case 1:
-                                _w = _x.sent(), w3schools = _w[0], stackoverflow = _w[1], geeksforgeeks = _w[2];
-                                geeksforgeeksResponse = geeksforgeeks.status === "fulfilled"
-                                    ? new jsdom.JSDOM((_d = (_c = (_b = (_a = geeksforgeeks === null || geeksforgeeks === void 0 ? void 0 : geeksforgeeks.value) === null || _a === void 0 ? void 0 : _a.searchResults) === null || _b === void 0 ? void 0 : _b.results) === null || _c === void 0 ? void 0 : _c[0]) === null || _d === void 0 ? void 0 : _d.frontend_code_snippet).window.document.children[0].textContent ||
-                                        ((_h = (_g = (_f = (_e = geeksforgeeks === null || geeksforgeeks === void 0 ? void 0 : geeksforgeeks.value) === null || _e === void 0 ? void 0 : _e.searchResults) === null || _f === void 0 ? void 0 : _f.results) === null || _g === void 0 ? void 0 : _g[0]) === null || _h === void 0 ? void 0 : _h.frontend_code_snippet)
-                                    : null;
-                                stackoverflowBestResponse = stackoverflow.status === "fulfilled"
-                                    ? new jsdom.JSDOM((_m = (_l = (_k = (_j = stackoverflow === null || stackoverflow === void 0 ? void 0 : stackoverflow.value) === null || _j === void 0 ? void 0 : _j.searchResults) === null || _k === void 0 ? void 0 : _k.results) === null || _l === void 0 ? void 0 : _l[0]) === null || _m === void 0 ? void 0 : _m.top_answer["body"]).window.document.children[0].textContent ||
-                                        ((_r = (_q = (_p = (_o = stackoverflow === null || stackoverflow === void 0 ? void 0 : stackoverflow.value) === null || _o === void 0 ? void 0 : _o.searchResults) === null || _p === void 0 ? void 0 : _p.results) === null || _q === void 0 ? void 0 : _q[0]) === null || _r === void 0 ? void 0 : _r.top_answer["body"])
-                                    : null;
-                                console.log(stackoverflow.status === "fulfilled" ? stackoverflow.value : null);
-                                w3SchoolsBestResponse = w3schools.status === "fulfilled"
-                                    ? (_v = (_u = (_t = (_s = w3schools === null || w3schools === void 0 ? void 0 : w3schools.value) === null || _s === void 0 ? void 0 : _s.searchResults) === null || _t === void 0 ? void 0 : _t.results) === null || _u === void 0 ? void 0 : _u[0]) === null || _v === void 0 ? void 0 : _v.frontend_code_snippet
-                                    : null;
+                                _a = _b.sent(), w3schools = _a[0], stackoverflow = _a[1], geeksforgeeks = _a[2], mozilla = _a[3];
+                                geeksforgeeksResponse = geeksforgeeks.status === "fulfilled" ? geeksforgeeks.value : null;
+                                stackoverflowBestResponse = stackoverflow.status === "fulfilled" ? stackoverflow.value : null;
+                                w3SchoolsBestResponse = w3schools.status === "fulfilled" ? w3schools.value : null;
+                                mozillaBestResponse = mozilla.status === "fulfilled" ? mozilla.value : null;
                                 console.log(w3SchoolsBestResponse ||
                                     stackoverflowBestResponse ||
-                                    geeksforgeeksResponse);
+                                    geeksforgeeksResponse ||
+                                    mozillaBestResponse);
                                 reply.send(w3SchoolsBestResponse ||
                                     stackoverflowBestResponse ||
-                                    geeksforgeeksResponse);
+                                    geeksforgeeksResponse ||
+                                    mozillaBestResponse);
                                 return [2 /*return*/];
                         }
                     });

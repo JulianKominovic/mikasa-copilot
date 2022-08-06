@@ -1,6 +1,7 @@
 import { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
 import {
   searchGeeksForGeeks,
+  searchMozilla,
   searchStackOverflow,
   searchW3schools,
 } from "../engines/searchEngine";
@@ -34,49 +35,36 @@ export default async function searchController(fastify: FastifyInstance) {
       if (tryLocalSearch.total > 0)
         reply.send((tryLocalSearch as any)?.[0].obj.snippet);
 
-      const [w3schools, stackoverflow, geeksforgeeks] =
+      const [w3schools, stackoverflow, geeksforgeeks, mozilla] =
         await Promise.allSettled([
           searchW3schools(termToSearch),
           searchStackOverflow(termToSearch),
           searchGeeksForGeeks(termToSearch),
+          searchMozilla(termToSearch),
         ]);
 
       const geeksforgeeksResponse =
-        geeksforgeeks.status === "fulfilled"
-          ? (new JSDOM(
-              geeksforgeeks?.value?.searchResults?.results?.[0]?.frontend_code_snippet
-            ).window.document.children[0].textContent as string) ||
-            geeksforgeeks?.value?.searchResults?.results?.[0]
-              ?.frontend_code_snippet
-          : null;
+        geeksforgeeks.status === "fulfilled" ? geeksforgeeks.value : null;
 
       const stackoverflowBestResponse =
-        stackoverflow.status === "fulfilled"
-          ? (new JSDOM(
-              stackoverflow?.value?.searchResults?.results?.[0]?.top_answer[
-                "body"
-              ]
-            ).window.document.children[0].textContent as string) ||
-            stackoverflow?.value?.searchResults?.results?.[0]?.top_answer[
-              "body"
-            ]
-          : null;
-      console.log(
-        stackoverflow.status === "fulfilled" ? stackoverflow.value : null
-      );
+        stackoverflow.status === "fulfilled" ? stackoverflow.value : null;
+
       const w3SchoolsBestResponse =
-        w3schools.status === "fulfilled"
-          ? w3schools?.value?.searchResults?.results?.[0]?.frontend_code_snippet
-          : null;
+        w3schools.status === "fulfilled" ? w3schools.value : null;
+      const mozillaBestResponse =
+        mozilla.status === "fulfilled" ? mozilla.value : null;
+
       console.log(
         w3SchoolsBestResponse ||
           stackoverflowBestResponse ||
-          geeksforgeeksResponse
+          geeksforgeeksResponse ||
+          mozillaBestResponse
       );
       reply.send(
         w3SchoolsBestResponse ||
           stackoverflowBestResponse ||
-          geeksforgeeksResponse
+          geeksforgeeksResponse ||
+          mozillaBestResponse
       );
     }
   );
