@@ -14,11 +14,14 @@ var searchW3schools = function (term) {
         .then(function (res) {
         var _a, _b, _c;
         var body = (_c = (_b = (_a = res.data) === null || _a === void 0 ? void 0 : _a.searchResults) === null || _b === void 0 ? void 0 : _b.results) === null || _c === void 0 ? void 0 : _c[0];
-        return ((body === null || body === void 0 ? void 0 : body.frontend_title) +
-            "\n" +
-            (body === null || body === void 0 ? void 0 : body.frontend_text) +
-            "\n" +
-            (body === null || body === void 0 ? void 0 : body.frontend_code_snippet));
+        var responseText = "";
+        if (body === null || body === void 0 ? void 0 : body.frontend_title)
+            responseText += "\n" + (body === null || body === void 0 ? void 0 : body.frontend_title);
+        if (body === null || body === void 0 ? void 0 : body.frontend_text)
+            responseText += "\n" + (body === null || body === void 0 ? void 0 : body.frontend_text);
+        if (body === null || body === void 0 ? void 0 : body.frontend_code_snippet)
+            responseText += "\n" + (body === null || body === void 0 ? void 0 : body.frontend_code_snippet);
+        return responseText;
     });
 };
 exports.searchW3schools = searchW3schools;
@@ -41,10 +44,15 @@ var searchGeeksForGeeks = function (term) {
         .then(function (res) {
         var _a, _b, _c;
         var body = (_c = (_b = (_a = res.data) === null || _a === void 0 ? void 0 : _a.searchResults) === null || _b === void 0 ? void 0 : _b.results) === null || _c === void 0 ? void 0 : _c[0];
-        return ((body === null || body === void 0 ? void 0 : body.frontend_title) +
-            "\n" +
-            (new jsdom_1.JSDOM(body === null || body === void 0 ? void 0 : body.frontend_code_snippet).window.document.children[0]
-                .textContent || (body === null || body === void 0 ? void 0 : body.frontend_code_snippet)));
+        var responseText = "";
+        if (body === null || body === void 0 ? void 0 : body.frontend_title)
+            responseText += "\n" + (body === null || body === void 0 ? void 0 : body.frontend_title);
+        if (body === null || body === void 0 ? void 0 : body.frontend_code_snippet)
+            responseText +=
+                "\n" +
+                    (new jsdom_1.JSDOM(body === null || body === void 0 ? void 0 : body.frontend_code_snippet).window.document.children[0]
+                        .textContent || (body === null || body === void 0 ? void 0 : body.frontend_code_snippet));
+        return responseText;
     });
 };
 exports.searchGeeksForGeeks = searchGeeksForGeeks;
@@ -55,11 +63,14 @@ var searchMozilla = function (term) {
         .then(function (res) {
         var _a, _b, _c;
         var body = (_c = (_b = (_a = res.data) === null || _a === void 0 ? void 0 : _a.searchResults) === null || _b === void 0 ? void 0 : _b.results) === null || _c === void 0 ? void 0 : _c[0];
-        return ((body === null || body === void 0 ? void 0 : body.frontend_title) +
-            "\n" +
-            (body === null || body === void 0 ? void 0 : body.frontend_text) +
-            "\n" +
-            (body === null || body === void 0 ? void 0 : body.frontend_code_snippet));
+        var responseText = "";
+        if (body === null || body === void 0 ? void 0 : body.frontend_title)
+            responseText += "\n" + (body === null || body === void 0 ? void 0 : body.frontend_title);
+        if (body === null || body === void 0 ? void 0 : body.frontend_text)
+            responseText += "\n" + (body === null || body === void 0 ? void 0 : body.frontend_text);
+        if (body === null || body === void 0 ? void 0 : body.frontend_code_snippet)
+            responseText += "\n" + (body === null || body === void 0 ? void 0 : body.frontend_code_snippet);
+        return responseText;
     });
 };
 exports.searchMozilla = searchMozilla;

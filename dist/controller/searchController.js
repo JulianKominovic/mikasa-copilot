@@ -74,14 +74,18 @@ function searchController(fastify) {
                                 stackoverflowBestResponse = stackoverflow.status === "fulfilled" ? stackoverflow.value : null;
                                 w3SchoolsBestResponse = w3schools.status === "fulfilled" ? w3schools.value : null;
                                 mozillaBestResponse = mozilla.status === "fulfilled" ? mozilla.value : null;
-                                console.log(w3SchoolsBestResponse ||
-                                    stackoverflowBestResponse ||
-                                    geeksforgeeksResponse ||
-                                    mozillaBestResponse);
+                                console.log("geeksforgeeks");
+                                console.log(geeksforgeeksResponse);
+                                console.log("stackoverflow");
+                                console.log(stackoverflowBestResponse);
+                                console.log("w3schools");
+                                console.log(w3SchoolsBestResponse);
+                                console.log("mozilla");
+                                console.log(mozillaBestResponse);
                                 reply.send(w3SchoolsBestResponse ||
-                                    stackoverflowBestResponse ||
+                                    mozillaBestResponse ||
                                     geeksforgeeksResponse ||
-                                    mozillaBestResponse);
+                                    stackoverflowBestResponse);
                                 return [2 /*return*/];
                         }
                     });

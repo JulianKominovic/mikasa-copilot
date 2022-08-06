@@ -9,13 +9,12 @@ export const searchW3schools = (term = "") => {
     )
     .then((res) => {
       const body = res.data?.searchResults?.results?.[0];
-      return (
-        body?.frontend_title +
-        "\n" +
-        body?.frontend_text +
-        "\n" +
-        body?.frontend_code_snippet
-      );
+      let responseText = "";
+      if (body?.frontend_title) responseText += "\n" + body?.frontend_title;
+      if (body?.frontend_text) responseText += "\n" + body?.frontend_text;
+      if (body?.frontend_code_snippet)
+        responseText += "\n" + body?.frontend_code_snippet;
+      return responseText;
     });
 };
 
@@ -41,12 +40,14 @@ export const searchGeeksForGeeks = (term = "") => {
     .then((res) => {
       const body = res.data?.searchResults?.results?.[0];
 
-      return (
-        body?.frontend_title +
-        "\n" +
-        ((new JSDOM(body?.frontend_code_snippet).window.document.children[0]
-          .textContent as string) || body?.frontend_code_snippet)
-      );
+      let responseText = "";
+      if (body?.frontend_title) responseText += "\n" + body?.frontend_title;
+      if (body?.frontend_code_snippet)
+        responseText +=
+          "\n" +
+          ((new JSDOM(body?.frontend_code_snippet).window.document.children[0]
+            .textContent as string) || body?.frontend_code_snippet);
+      return responseText;
     });
 };
 
@@ -57,12 +58,11 @@ export const searchMozilla = (term = "") => {
     )
     .then((res) => {
       const body = res.data?.searchResults?.results?.[0];
-      return (
-        body?.frontend_title +
-        "\n" +
-        body?.frontend_text +
-        "\n" +
-        body?.frontend_code_snippet
-      );
+      let responseText = "";
+      if (body?.frontend_title) responseText += "\n" + body?.frontend_title;
+      if (body?.frontend_text) responseText += "\n" + body?.frontend_text;
+      if (body?.frontend_code_snippet)
+        responseText += "\n" + body?.frontend_code_snippet;
+      return responseText;
     });
 };

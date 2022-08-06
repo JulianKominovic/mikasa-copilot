@@ -7,7 +7,7 @@ import {
 } from "../engines/searchEngine";
 import fs from "fs";
 import path from "path";
-import { JSDOM } from "jsdom";
+
 import fuzzySearch from "fuzzysort";
 
 const oneLocSnippets = JSON.parse(
@@ -54,17 +54,20 @@ export default async function searchController(fastify: FastifyInstance) {
       const mozillaBestResponse =
         mozilla.status === "fulfilled" ? mozilla.value : null;
 
-      console.log(
-        w3SchoolsBestResponse ||
-          stackoverflowBestResponse ||
-          geeksforgeeksResponse ||
-          mozillaBestResponse
-      );
+      console.log("geeksforgeeks");
+      console.log(geeksforgeeksResponse);
+      console.log("stackoverflow");
+      console.log(stackoverflowBestResponse);
+      console.log("w3schools");
+      console.log(w3SchoolsBestResponse);
+      console.log("mozilla");
+      console.log(mozillaBestResponse);
+
       reply.send(
         w3SchoolsBestResponse ||
-          stackoverflowBestResponse ||
+          mozillaBestResponse ||
           geeksforgeeksResponse ||
-          mozillaBestResponse
+          stackoverflowBestResponse
       );
     }
   );

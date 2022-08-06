@@ -51192,11 +51192,14 @@ var searchW3schools = function (term) {
         .then(function (res) {
         var _a, _b, _c;
         var body = (_c = (_b = (_a = res.data) === null || _a === void 0 ? void 0 : _a.searchResults) === null || _b === void 0 ? void 0 : _b.results) === null || _c === void 0 ? void 0 : _c[0];
-        return ((body === null || body === void 0 ? void 0 : body.frontend_title) +
-            "\n" +
-            (body === null || body === void 0 ? void 0 : body.frontend_text) +
-            "\n" +
-            (body === null || body === void 0 ? void 0 : body.frontend_code_snippet));
+        var responseText = "";
+        if (body === null || body === void 0 ? void 0 : body.frontend_title)
+            responseText += "\n" + (body === null || body === void 0 ? void 0 : body.frontend_title);
+        if (body === null || body === void 0 ? void 0 : body.frontend_text)
+            responseText += "\n" + (body === null || body === void 0 ? void 0 : body.frontend_text);
+        if (body === null || body === void 0 ? void 0 : body.frontend_code_snippet)
+            responseText += "\n" + (body === null || body === void 0 ? void 0 : body.frontend_code_snippet);
+        return responseText;
     });
 };
 var searchStackOverflow = function (term) {
@@ -51217,10 +51220,15 @@ var searchGeeksForGeeks = function (term) {
         .then(function (res) {
         var _a, _b, _c;
         var body = (_c = (_b = (_a = res.data) === null || _a === void 0 ? void 0 : _a.searchResults) === null || _b === void 0 ? void 0 : _b.results) === null || _c === void 0 ? void 0 : _c[0];
-        return ((body === null || body === void 0 ? void 0 : body.frontend_title) +
-            "\n" +
-            (new jsdom.JSDOM(body === null || body === void 0 ? void 0 : body.frontend_code_snippet).window.document.children[0]
-                .textContent || (body === null || body === void 0 ? void 0 : body.frontend_code_snippet)));
+        var responseText = "";
+        if (body === null || body === void 0 ? void 0 : body.frontend_title)
+            responseText += "\n" + (body === null || body === void 0 ? void 0 : body.frontend_title);
+        if (body === null || body === void 0 ? void 0 : body.frontend_code_snippet)
+            responseText +=
+                "\n" +
+                    (new jsdom.JSDOM(body === null || body === void 0 ? void 0 : body.frontend_code_snippet).window.document.children[0]
+                        .textContent || (body === null || body === void 0 ? void 0 : body.frontend_code_snippet));
+        return responseText;
     });
 };
 var searchMozilla = function (term) {
@@ -51230,11 +51238,14 @@ var searchMozilla = function (term) {
         .then(function (res) {
         var _a, _b, _c;
         var body = (_c = (_b = (_a = res.data) === null || _a === void 0 ? void 0 : _a.searchResults) === null || _b === void 0 ? void 0 : _b.results) === null || _c === void 0 ? void 0 : _c[0];
-        return ((body === null || body === void 0 ? void 0 : body.frontend_title) +
-            "\n" +
-            (body === null || body === void 0 ? void 0 : body.frontend_text) +
-            "\n" +
-            (body === null || body === void 0 ? void 0 : body.frontend_code_snippet));
+        var responseText = "";
+        if (body === null || body === void 0 ? void 0 : body.frontend_title)
+            responseText += "\n" + (body === null || body === void 0 ? void 0 : body.frontend_title);
+        if (body === null || body === void 0 ? void 0 : body.frontend_text)
+            responseText += "\n" + (body === null || body === void 0 ? void 0 : body.frontend_text);
+        if (body === null || body === void 0 ? void 0 : body.frontend_code_snippet)
+            responseText += "\n" + (body === null || body === void 0 ? void 0 : body.frontend_code_snippet);
+        return responseText;
     });
 };
 
@@ -51812,14 +51823,18 @@ function searchController(fastify) {
                                 stackoverflowBestResponse = stackoverflow.status === "fulfilled" ? stackoverflow.value : null;
                                 w3SchoolsBestResponse = w3schools.status === "fulfilled" ? w3schools.value : null;
                                 mozillaBestResponse = mozilla.status === "fulfilled" ? mozilla.value : null;
-                                console.log(w3SchoolsBestResponse ||
-                                    stackoverflowBestResponse ||
-                                    geeksforgeeksResponse ||
-                                    mozillaBestResponse);
+                                console.log("geeksforgeeks");
+                                console.log(geeksforgeeksResponse);
+                                console.log("stackoverflow");
+                                console.log(stackoverflowBestResponse);
+                                console.log("w3schools");
+                                console.log(w3SchoolsBestResponse);
+                                console.log("mozilla");
+                                console.log(mozillaBestResponse);
                                 reply.send(w3SchoolsBestResponse ||
-                                    stackoverflowBestResponse ||
+                                    mozillaBestResponse ||
                                     geeksforgeeksResponse ||
-                                    mozillaBestResponse);
+                                    stackoverflowBestResponse);
                                 return [2 /*return*/];
                         }
                     });
