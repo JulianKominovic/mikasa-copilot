@@ -51828,7 +51828,8 @@ var server = fastify$1.exports({
 // Middleware: Router
 server.register(router);
 
-var FASTIFY_PORT = Number(process.env.FASTIFY_PORT) || 5000;
-server.listen({ port: FASTIFY_PORT });
+var FASTIFY_PORT = Number(process.env.PORT) || 5000;
+var FASTIFY_HOST = process.env.HOST || "192.168.1.39";
+server.listen({ port: FASTIFY_PORT, host: FASTIFY_HOST });
 console.log("\uD83D\uDE80  Fastify server running on port ".concat(FASTIFY_PORT));
 //# sourceMappingURL=index.js.map
