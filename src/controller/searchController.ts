@@ -1,5 +1,9 @@
 import { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
-import { searchStackOverflow, searchW3schools } from "../engines/searchEngine";
+import {
+  searchGeeksForGeeks,
+  searchStackOverflow,
+  searchW3schools,
+} from "../engines/searchEngine";
 import { JSDOM } from "jsdom";
 import fs from "fs";
 import path from "path";
@@ -13,7 +17,7 @@ export default async function searchController(fastify: FastifyInstance) {
   fastify.post(
     "/",
     async function (_request: FastifyRequest, reply: FastifyReply) {
-      const termToSearch = _request.body;
+      const termToSearch = _request.body as string;
 
       const tryLocalSearch = fuzzySearch.go(
         termToSearch as string,
@@ -30,10 +34,21 @@ export default async function searchController(fastify: FastifyInstance) {
       if (tryLocalSearch.total > 0)
         reply.send((tryLocalSearch as any)?.[0].obj.snippet);
 
-      const [w3schools, stackoverflow] = await Promise.allSettled([
-        searchW3schools(termToSearch as string),
-        searchStackOverflow(termToSearch as string),
-      ]);
+      const [w3schools, stackoverflow, geeksforgeeks] =
+        await Promise.allSettled([
+          searchW3schools(termToSearch),
+          searchStackOverflow(termToSearch),
+          searchGeeksForGeeks(termToSearch),
+        ]);
+
+      const geeksforgeeksResponse =
+        geeksforgeeks.status === "fulfilled"
+          ? (new JSDOM(
+              geeksforgeeks?.value?.searchResults?.results?.[0]?.frontend_code_snippet
+            ).window.document.children[0].textContent as string) ||
+            geeksforgeeks?.value?.searchResults?.results?.[0]
+              ?.frontend_code_snippet
+          : null;
 
       const stackoverflowBestResponse =
         stackoverflow.status === "fulfilled"
@@ -53,8 +68,16 @@ export default async function searchController(fastify: FastifyInstance) {
         w3schools.status === "fulfilled"
           ? w3schools?.value?.searchResults?.results?.[0]?.frontend_code_snippet
           : null;
-      console.log(w3SchoolsBestResponse || stackoverflowBestResponse);
-      reply.send(w3SchoolsBestResponse || stackoverflowBestResponse);
+      console.log(
+        geeksforgeeksResponse ||
+          w3SchoolsBestResponse ||
+          stackoverflowBestResponse
+      );
+      reply.send(
+        geeksforgeeksResponse ||
+          w3SchoolsBestResponse ||
+          stackoverflowBestResponse
+      );
     }
   );
 }
