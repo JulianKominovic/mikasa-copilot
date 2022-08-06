@@ -51795,12 +51795,12 @@ function searchController(fastify) {
                                 w3SchoolsBestResponse = w3schools.status === "fulfilled"
                                     ? (_v = (_u = (_t = (_s = w3schools === null || w3schools === void 0 ? void 0 : w3schools.value) === null || _s === void 0 ? void 0 : _s.searchResults) === null || _t === void 0 ? void 0 : _t.results) === null || _u === void 0 ? void 0 : _u[0]) === null || _v === void 0 ? void 0 : _v.frontend_code_snippet
                                     : null;
-                                console.log(geeksforgeeksResponse ||
-                                    w3SchoolsBestResponse ||
-                                    stackoverflowBestResponse);
-                                reply.send(geeksforgeeksResponse ||
-                                    w3SchoolsBestResponse ||
-                                    stackoverflowBestResponse);
+                                console.log(w3SchoolsBestResponse ||
+                                    stackoverflowBestResponse ||
+                                    geeksforgeeksResponse);
+                                reply.send(w3SchoolsBestResponse ||
+                                    stackoverflowBestResponse ||
+                                    geeksforgeeksResponse);
                                 return [2 /*return*/];
                         }
                     });
