@@ -4,9 +4,9 @@ import {
   searchStackOverflow,
   searchW3schools,
 } from "../engines/searchEngine";
-import { JSDOM } from "jsdom";
 import fs from "fs";
 import path from "path";
+import { JSDOM } from "jsdom";
 import fuzzySearch from "fuzzysort";
 
 const oneLocSnippets = JSON.parse(

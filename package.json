@@ -1,23 +1,27 @@
 {
-  "name": "fastify-typescript-starter",
+  "name": "mikasa-copilot",
   "version": "4.1.0",
-  "description": "Fastify TypeScript starter repository",
+  "description": "Mikasa copilot server",
   "scripts": {
     "watch": "tsc --watch --preserveWatchOutput --pretty",
     "dev": "cross-env NODE_ENV=development nodemon",
     "format": "prettier --write \"src/**/*.ts\"",
-    "build": "rimraf dist && tsc",
+    "build": "rollup --config",
     "start": "node dist/index.js"
   },
-  "author": "Matschik <mathieu.schimmerling@protonmail.com>",
+  "author": "Julian Kominovic <juliankominovic@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.27.2",
-    "fastify": "^4.3.0",
-    "fuzzysort": "^2.0.1",
     "jsdom": "^20.0.0"
   },
   "devDependencies": {
+    "axios": "^0.27.2",
+    "fastify": "^4.3.0",
+    "fuzzysort": "^2.0.1",
+    "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.3",
     "@types/jsdom": "^20.0.0",
     "@types/node": "latest",
     "cross-env": "^7.0.3",
@@ -25,7 +29,11 @@
     "nodemon": "^2.0.19",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
+    "rollup": "^2.75.7",
+    "rollup-plugin-dts": "^4.2.2",
+    "ts-loader": "^9.3.1",
     "tsconfig-paths": "^4.0.0",
+    "tslib": "^2.4.0",
     "typescript": "^4.7.4"
   }
 }

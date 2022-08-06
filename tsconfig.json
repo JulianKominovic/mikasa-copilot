@@ -1,5 +1,4 @@
 {
-  "extends": "fastify-tsconfig",
   "compilerOptions": {
     "sourceMap": true,
     "outDir": "./dist",
@@ -16,5 +15,5 @@
     "baseUrl": "."
   },
   "exclude": ["node_modules"],
-  "include": ["./src/**/*.ts"]
+  "include": ["./src/**/*.ts", "scrappers/oneLoc.ts"]
 }
