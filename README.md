@@ -20,7 +20,7 @@ El server quedaria corriendo local en la maquina en el puerto 5000 por ejemplo
 
 - [ ] - Latencia (promedio 600 ms.).
 - [ ] - Poca efectividad en los snippets.
-- [ x ] - Extension de vscode y comunicacion con la app.
+- [X] - ~Extension de vscode y comunicacion con la app.~
 
 ## 🙃 Posibles soluciones
 
